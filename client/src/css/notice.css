@@ -1,0 +1,103 @@
+.preNotice{
+    height : 40px ; 
+    width : 400px ; 
+    border : 1px solid black ; 
+    border-radius : 25px ; 
+    font-size : 1.5rem ;
+    padding-left  : 15px ; 
+    line-height: 40px ;
+    color : grey ;
+    cursor: pointer;
+}
+.preNotice:hover{
+    background-color: lightgray;
+}
+
+/* OverLay Material css *********************************** */
+.overlayMaterial{
+    height : 100% ; 
+    width : 100% ; 
+    position : absolute ; 
+    background-color : lightgrey ; 
+    opacity : 0.6;
+    transform : scale(0,0) ;
+}
+
+/* Notice Block css **********  **** */
+.noticeBlock{
+    height : 300px ; 
+    width : 400px ; 
+    border : 1px solid black ; 
+    position : absolute ; 
+    top : 10% ; 
+    left : 32% ; 
+    display: flex;
+    flex-direction: column;
+    transform : scale(0,0) ;
+    transition : .4s ; 
+    background-color: darkgray;
+}
+
+.noticeBlock-heading{
+    height : 50px ; 
+    width : 100% ; 
+    box-sizing: border-box;
+    border-bottom: .5px solid whitesmoke; 
+    font-size : 1.5rem ;
+    padding : 10px ; 
+    color : white
+}
+
+
+.noticeBlock-cancelButton{
+    cursor : pointer ; 
+}
+
+.noticeBlock-mainBody{
+    height : 200px ; 
+    border-bottom: .5px solid whitesmoke; 
+    font-size : 1.3rem ;
+    padding : 3px ; 
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.noticeBlock-mainBody-wrapper{
+    height : 100% ; 
+    width : 107% ;  
+    overflow-x : hidden ;
+}
+
+.noticeBlock-mainBody-wrapper-editor{
+    min-height : 200px ; 
+    width : 100% ; 
+
+}
+
+.noticeBlock-mainBody-wrapper-editor:empty:before {
+    content: attr(data-placeholder);
+    color : lightgrey
+}
+
+.noticeBlock-postButton{
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.noticeBlock-postButton > div {
+    height : 100% ; 
+    width : 20% ; 
+}
+
+.noticeBlock-postButton-post{
+    line-height: 50px;
+    font-size : 1.5rem ;
+    color : white ; 
+    background-color: darkslateblue;
+    text-align: center;
+    border-radius: 20px ;
+    margin-right : 10px ; 
+    cursor: pointer;
+}
+
+

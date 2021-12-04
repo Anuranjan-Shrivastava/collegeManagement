@@ -1,5 +1,5 @@
 import React from "react";
-import { Home , Login , Signup , Attendence } from './index' ;
+import { Home , Login , Signup , Attendence , Notice } from './index' ;
 import {BrowserRouter as Router ,Route} from 'react-router-dom' ;
 import { authenticateUser} from '../actions/auth' ;
 import jwt_decode from 'jwt-decode' ; 
@@ -37,6 +37,7 @@ class App extends React.Component{
            <Route exact={true} path="/login" component={Login} />
            <Route exact={true} path="/signup" component={Signup} />
            <Route exact={true} path="/attendence" component={Attendence}/>
+           <Route exact={true} path="/notice" component={Notice}/>
       </div>
       </Router>
     )

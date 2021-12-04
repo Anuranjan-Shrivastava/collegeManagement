@@ -115,27 +115,22 @@ module.exports.addnotice = async function(req, res){
 
 module.exports.getnotice = async function(req, res){
     console.log('get req in notice');
-    const {user} = req.query
-    console.log("user",user);
-    let noticeData = await noticedb.find(
-        {
-            'user':user
-        }
-        )
+    console.log("userEmail ",req.query.user);
+    let noticeData = await noticedb.find({}) ;
     
-        if(noticeData) res.status(200).send({
-            data: noticeData
+    if(noticeData) {
+        res.status(200).send({
+        data : {
+            success : true , 
+            data : noticeData
+        }
+    })}
+    else{
+        return res.status(500).send({
+            data : {
+                success : false , 
+                err : "Internal Server Error"
+            }
         })
-        else{
-            return res.status(500).send({
-                success: false,
-                
-                message: 'Internal Server Error'
-            })
-        }
-
-    
-    // body = {
-    //     notice_mesage : "notice to all student plz attend the classes"
-    // }
+    }
 }

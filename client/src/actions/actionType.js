@@ -10,3 +10,9 @@ export const LOGOUT = "LOGOUT" ;
 //action to authenticate for every further request
 export const AUTHENTICATE_USER = "AUTHENTICATE_USER" ;
 
+//action types for maintainign notices
+export const FETCH_NOTICE_SUCCESS = "FETCH_NOTICE_SUCCESS" ; 
+export const FETCH_NOTICE_FAILURE = "FETCH_NOTICE_SUCCESS" ;
+export const POST_NOTICE_SUCCESS = "POST_NOTICE_SUCCESS" ;
+export const POST_NOTICE_FAILURE = "POST_NOTICE_FAILURE" ;
+

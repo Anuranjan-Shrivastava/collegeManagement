@@ -10,7 +10,11 @@ const notice_schema = new mongoose.Schema({
         required: true
     }
 
-})
+} , 
+   {
+    timestamps : true , 
+    }
+ )
 
 const notice = mongoose.model('notice' , notice_schema);
 module.exports = notice ; 

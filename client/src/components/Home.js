@@ -1,43 +1,9 @@
 import React from "react";
-import axios from "axios";
 import {Link } from 'react-router-dom' ;
 import { connect } from 'react-redux' ;
 import { logoutUser } from '../actions/auth' ;
 
 class Home extends React.Component{
-    constructor(){
-        super() ;
-        this.state = {
-            notice_message : ""  ,
-            posts:[]
-        }
-    }
-    getBlogPost= () =>{
-        const token = localStorage.getItem('token') ;
-        console.log(this.props.auth.user.email);
-       axios.get(`http://localhost:8000/user/addnotice?user=${this.props.auth.user.email}`,{
-        headers:{
-        Authorization : `Bearer ${token}`
-       }
-    })
-        .then((response)=>{  
-           const data = response.data;
-           console.log(data);
-           this.setState({posts:data});
-           console.log('Data has been received!!');
-        })
-        .catch(()=>{
-            alert('Error receivieng data!!!');
-        }
-        );
-           
-
-    }
-    handleChange = (field , value) => {
-        this.setState({
-            [field] : value 
-        })
-    }
 
     logout = () => {
        console.log("LogOut pressed") ;
@@ -45,34 +11,8 @@ class Home extends React.Component{
         this.props.dispatch(logoutUser()) ;
         
     }
-     handleNoticeSubmit =(e)=>{
-        e.preventDefault()
-        const url = "http://localhost:8000/user/addnotice" ;
-        const token = localStorage.getItem('token') ;
-
-        const options = {
-            method : "POST" ,
-            headers : {
-                'Content-Type' : 'application/json' ,
-                Authorization : `Bearer ${token}`
-            } ,
-            body: JSON.stringify({
-                user: this.props.auth.user.email,
-                text: this.state.notice_message
-            })
-        }
-
-        fetch(url , options).then(res => res.json()).then((data) => {
-            console.log('success notice addition') ;  
-        }).then(()=>{
-            this.getBlogPost()
-        })
-        .catch(e=> console.error(e))
-    }
    
     render(){
-
-         console.log(this.state.posts) ;
         if(this.props.auth.isLoggedIn){
             return (
                 <div>
@@ -84,30 +24,11 @@ class Home extends React.Component{
                     <Link to="/attendence">
                      <button>Attendence</button>
                      </Link>
-                     <div>
-                         {/* {showNotice} */}
-                     </div>
+                     <br/><br/>
+                     <Link to="/notice">
+                     <button>Notice</button>
+                     </Link>
                      <br/><br/><br/>
-                     <form onSubmit={this.handleNoticeSubmit}>
-                    <label>
-                        NOTICE:<input type="text" name ="notice" 
-                        value={this.state.notice_message}
-                        onChange={(e)=>{
-                            this.setState({ notice_message: e.target.value})
-                        }}/>
-                    </label>
-                    <input type="submit" value ="ADD"/>
-                </form>
-                <ul>
-                {this.state.posts.data &&
-                   this.state.posts.data.map(post=>(<li>{post.user}</li>))
-                }
-                </ul>
-                <ul>
-                {this.state.posts.data &&
-                   this.state.posts.data.map(post=>(<li>{post.text}</li>))
-                }
-                </ul>
                 </div>
             )
         }
@@ -134,3 +55,28 @@ function mapStateToProps({auth}){
     }
 }
 export default connect(mapStateToProps)(Home) ;
+
+
+
+// {/* <form onSubmit={this.handleNoticeSubmit}>
+//                     <label>
+//                         NOTICE:
+//                         <input type="text" name ="notice" 
+//                         value={this.state.notice_message}
+//                         onChange={(e)=>{
+//                             this.setState({ notice_message: e.target.value})
+//                         }}/>
+//                     </label>
+//                     <input type="submit" value ="ADD"/>
+//                 </form> */}
+
+                // <ul>
+                // {this.state.posts.data &&
+                //    this.state.posts.data.map(post=>(<li>{post.user}</li>))
+                // }
+                // </ul>
+                // <ul>
+                // {this.state.posts.data &&
+                //    this.state.posts.data.map(post=>(<li>{post.text}</li>))
+                // }
+                // </ul>
