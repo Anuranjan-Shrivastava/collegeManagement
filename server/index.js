@@ -12,7 +12,8 @@ const passport_jwt = require('./config/passport-jwt') ; ;
 app.use(cors()) ;
 app.use(express.json()) ;
 app.use(express.urlencoded({
-    extended : false 
+    extended : false  , 
+    limit: '50mb'
 })) ;
 app.use(passport.initialize());
 

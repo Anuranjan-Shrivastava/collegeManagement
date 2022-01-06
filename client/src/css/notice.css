@@ -1,33 +1,104 @@
+#notice_component{
+    /* border : 1px solid black ;  */
+    height : auto ;
+
+    width : 100vw ; 
+
+    background-color: rgb(31,27,44);
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* overflow-y: scroll; */
+    overflow-x: hidden;
+
+    position: relative;
+   
+}
+
+.main-notice-component-container{
+   height : 100% ; 
+   width : 60%  ;
+   box-sizing: border-box;
+   border : 1px solid white ; 
+
+   display: flex;
+   flex-direction: column;
+
+   overflow-x: hidden;
+  
+
+}
+
+
+
 .preNotice{
+    height : 300px ; 
+    width : 100% ; 
+    box-sizing: border-box;
+    border-bottom: 1px solid white ;
+    padding-top : 40px ; 
+   
+}
+.preNotice-heading {
+    color : white ; 
+    font-size : 3rem ;
+    text-align: center;
+}
+
+.preNotice-edit-notice{
+   height : 100px ; 
+   width : 100% ; 
+   box-sizing: border-box;
+   /* border : 1px solid white ;  */
+
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.preNotice-edit-notice > div {
+
+    background-color: rgb(35,34,52);
+    border : 1px solid white ; 
+    border-radius : 20px ; 
+
     height : 40px ; 
     width : 400px ; 
-    border : 1px solid black ; 
-    border-radius : 25px ; 
+
     font-size : 1.5rem ;
     padding-left  : 15px ; 
     line-height: 40px ;
     color : grey ;
-    cursor: pointer;
+    cursor: pointer; 
+
+    box-shadow: 5px 10px  5px rgb(26,22,37);
 }
-.preNotice:hover{
-    background-color: lightgray;
+.preNotice-edit-notice > div:hover{
+    background-color: rgb(106, 104, 104);
+    color : wheat
 }
 
 /* OverLay Material css *********************************** */
 .overlayMaterial{
     height : 100% ; 
-    width : 100% ; 
+    width : 140% ; 
     position : absolute ; 
     background-color : lightgrey ; 
-    opacity : 0.6;
+    opacity : 0.4;
     transform : scale(0,0) ;
 }
+
+
 
 /* Notice Block css **********  **** */
 .noticeBlock{
     height : 300px ; 
     width : 400px ; 
     border : 1px solid black ; 
+
     position : absolute ; 
     top : 10% ; 
     left : 32% ; 
@@ -35,7 +106,8 @@
     flex-direction: column;
     transform : scale(0,0) ;
     transition : .4s ; 
-    background-color: darkgray;
+    background-color: black;
+    z-index: 3;
 }
 
 .noticeBlock-heading{
@@ -60,6 +132,7 @@
     padding : 3px ; 
     box-sizing: border-box;
     overflow: hidden;
+    background-color: darkgray;
 }
 
 .noticeBlock-mainBody-wrapper{
@@ -88,7 +161,19 @@
     height : 100% ; 
     width : 20% ; 
 }
-
+.noticeBlock-postButton-attachment{
+    line-height: 50px;
+    font-size : 1.5rem ;
+    color : white ; 
+    /* background-color: darkslateblue; */
+    text-align: center;
+    border-radius: 20px ;
+    margin-right : 10px ; 
+    cursor: pointer;
+}
+.noticeBlock-postButton-attachment input[type="file"]{
+    display: none;
+}
 .noticeBlock-postButton-post{
     line-height: 50px;
     font-size : 1.5rem ;
@@ -98,6 +183,108 @@
     border-radius: 20px ;
     margin-right : 10px ; 
     cursor: pointer;
+}
+
+
+/* Actual styling starts */
+
+.notices-full-container{
+    margin-top : 20px ; 
+    border-top : 1px solid black ; 
+    height : auto ; 
+    width : 100% ; 
+    display: flex;
+    flex-direction: column;
+}
+
+.single-notice-container{
+    min-height : 100px ; 
+    width : 100% ; 
+    border : .5px solid black   ;
+    display : flex ; 
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-bottom : 20px ; 
+    position: relative;
+}
+/* .single-notice-container > div{
+    border-top : .5px solid black ; 
+} */
+.single-notice-container-options{
+    position: absolute;
+    top : 5% ; 
+    right : 2% ; 
+    cursor: pointer;
+    /* display: none; */
+}
+.single-notice-container-options-menu{
+    box-sizing: border-box;
+    border : 1px solid black ; 
+    position: absolute;
+    top : 16% ; 
+    right : 2% ; 
+    padding : 5px ; 
+    cursor: pointer;
+    display: none;
+    color : wheat
+}
+.single-notice-container-name{
+    height : 50px ; 
+    width : 100% ; 
+    font-size : 1.8rem ;
+    line-height : 50px ; 
+    padding-left : 10px ; 
+    box-sizing: border-box;
+    color : wheat
+}
+
+.single-notice-container-date{
+    height : 20px ; 
+    width : 100% ; 
+    padding-left : 10px ; 
+    box-sizing: border-box;
+    color : rgb(203,213,224)
+}
+.single-notice-container-content{
+    min-height : 10px ; 
+    width : 97..6% ;
+    padding : 10px ;  
+    /* box-sizing: border-box; */
+    font-size : 1.5rem ;
+    /* border-bottom : .5px solid black  ;  */
+    /* background-color: aliceblue; */
+    color : white ;
+}
+.single-notice-container-pdf{
+    min-height : 10px ; 
+    width : 300px ;
+    padding : 10px ;  
+    box-sizing: border-box;
+    font-size : 1.5rem ;
+    /* border-bottom : .5px solid black  ;  */
+    background-color: slategray;
+    border-radius: 25px;
+    text-align: left;
+    margin-left : 10px ; 
+    margin-top : 10px ; 
+    margin-bottom : 10px ; 
+}
+.single-notice-container-pdf > a {
+    color : white ; 
+    text-decoration: none;
+}
+.single-notice-container-img{
+    height : 250px ; 
+    width : 250px ;
+    box-sizing: border-box;
+    /* border : 1px solid black ;  */
+    margin-left : 10px ; 
+    margin-top : 10px ; 
+    margin-bottom : 10px ; 
+}
+.single-notice-container-img img {
+    height : 100% ; 
+    width : 100% ; 
 }
 
 

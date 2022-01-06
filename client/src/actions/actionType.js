@@ -16,3 +16,11 @@ export const FETCH_NOTICE_FAILURE = "FETCH_NOTICE_SUCCESS" ;
 export const POST_NOTICE_SUCCESS = "POST_NOTICE_SUCCESS" ;
 export const POST_NOTICE_FAILURE = "POST_NOTICE_FAILURE" ;
 
+
+//action types for fetching user profile may khud ki sometimes 
+export const FETCH_USER_PROFILE_SUCCESS = "FETCH_USER_PROFILE_SUCCESS" ;
+export const FETCH_USER_PROFILE_FAILURE = "FETCH_USER_PROFILE_FAILURE" ;
+
+//action type to update profile 
+export const UPDATE_PROFILE = "UPDATE_PROFILE" ;
+

@@ -1,0 +1,80 @@
+.primary{
+    height : 100vh ; 
+    width : 100vw; 
+    margin : 0px ; 
+    padding :0px ; 
+
+    background-image: url("../css/collegePic.png");
+    background-repeat: no-repeat;
+    background-size: cover ;
+}
+.preprimary{
+    /* height & width */
+    height: auto;
+    width: 35%;
+
+    position: relative;
+    top : 20% ; 
+
+    margin : auto  ; 
+    padding : 0px ; 
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+   
+    border-radius: 60px;
+    background-color: white;
+    /* background: transparent; */
+    background-color: rgba(0,0,0,.5); 
+
+}
+.preprimary h1{
+    color : white ;
+}
+.preprimary > div {
+   height : 50px ; 
+   width : 300px ; 
+   background-color: wheat;
+   margin : 30px ; 
+   border-radius: 25px ; 
+   overflow: hidden;
+   box-sizing: border-box;
+}
+.preprimary-email-input > input{
+    width: 100%;
+    height: 100%;
+    border:none;
+    outline: none;
+    padding-left: 10px;
+    font-size : 1rem ;
+    background-color: white;
+    box-shadow: inset 0px 0px 25px 0px #888;
+
+}
+.primary input[type="password"]{
+    width: 300px;
+    height: 50px;
+    border-radius: 60px;
+    box-shadow: inset 0px 0px 25px 0px #888;
+    border:none;
+    outline: none;
+    background-color: white;
+    padding-left: 20px;
+    font-size : 1rem ;
+
+
+} 
+.login_button button{
+    width: 100%;
+    height: 100%;
+    border-radius: 60px;
+    background:linear-gradient(135deg,#f33d3d, rgb(196, 83, 102));
+    color: white;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}

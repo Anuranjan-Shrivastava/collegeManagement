@@ -7,7 +7,12 @@ const notice_schema = new mongoose.Schema({
     },
     text: {
         type:String,
-        required: true
+    } , 
+    pdf : {
+        type : String 
+    } , 
+    img : {
+        type : String
     }
 
 } , 

@@ -5,6 +5,7 @@ import Attendence  from './Attendence';
 import StudentList from './StudentList';
 import Notice from './Notice' ;
 import NoticeBoard from './NoticeBoard';
+import Profile from './Profile';
 
 export {
     Login , 
@@ -13,5 +14,7 @@ export {
     Attendence,
     StudentList ,
     Notice , 
-    NoticeBoard
+    NoticeBoard ,  
+    Profile
+
 }

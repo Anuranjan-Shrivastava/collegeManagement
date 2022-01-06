@@ -33,9 +33,31 @@ const user_schema = new mongoose.Schema({
         type : Number , 
         required : true 
     },
+    monthlyAttendence : {
+        type : Array , 
+        required : true 
+    } ,
     gender : {
         type : String , 
         required : true
+    } , 
+    about : {
+        type : String 
+    } , 
+    skills : {
+        type : Array
+    } , 
+    socialLinks : {
+        type : Array
+    } , 
+    resume : {
+        type : String
+    } , 
+    cover : {
+        type : String
+    } , 
+    dp : {
+        type : String
     }
 }) ;
 

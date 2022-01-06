@@ -8,7 +8,7 @@ export function getBlogPost(email){
     console.log("getBlogPost CLicked") ;
     return (dispatch) => {
         const token = localStorage.getItem('token') ;
-        const url = `http://localhost:8000/user/addnotice?user=${email}` ;
+        const url = `http://localhost:8000/user/getNotice?user=${email}` ;
         const options = {
             method : "GET" ,
             headers:{

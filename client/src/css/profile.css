@@ -1,0 +1,378 @@
+.profilePage{
+    margin : 0px ; 
+    padding : 0px ;
+    box-sizing: border-box;
+    border : 1px solid black ;
+    height : auto ; 
+    width : 100vw ;  
+    background-color: rgb(31,27,44);
+
+}
+
+.profilePage-container{
+    height : 100% ; 
+    width : 70% ; 
+    box-sizing: border-box;
+    /* border : 1px solid white ;  */
+    /* background-color: rgb(31,27,44); */
+
+    margin : auto ; 
+    margin-top : 20px ; 
+    margin-bottom : 30px ; 
+
+    display : flex ; 
+    flex-direction: column;
+    align-items: center;
+
+    
+}
+
+
+
+.profilePage-container-details{
+    height : 400px ; 
+    width : 95% ; 
+    background-color: lightyellow;
+    box-sizing: border-box;
+    
+    display: flex;
+    flex-direction: column;
+
+    /* box-shadow: rgb(0 0 0 / 25%) 0px 8px 16px; */
+    box-shadow: 5px 10px  5px rgb(26,22,37);
+
+    overflow: hidden; 
+    border-radius : 25px ; 
+}
+
+/* Complete Css of cover pic profile pic and name branch sem */
+
+.profilePage-container-details-cover-change{
+    position: absolute ;
+    top : 5px ; 
+    right : 10px ; 
+    cursor : pointer
+}
+.profilePage-container-details-cover-change input {
+    display: none;
+}
+
+.profilePage-container-details-cover-options{
+    position: absolute;
+    top : 50px ; 
+    right : 10px ; 
+}
+
+.profilePage-container-details-profile-detail-profile-change{
+    position: absolute ;
+    bottom : 10px ; 
+    left : 15px; 
+    cursor : pointer
+}
+.profilePage-container-details-profile-detail-profile-change input{
+   display: none;
+}
+.profilePage-container-details-dp-options{
+    position: absolute;
+    bottom :   10px ;
+    left : 50px ; 
+}
+
+
+
+
+.profilePage-container-details > div{
+    height : 50% ; 
+    margin : 0px ; 
+    width : 100% ; 
+}
+.profilePage-container-details-cover{
+    background-color: aquamarine;
+    position: relative;
+}
+.profilePage-container-details-cover img{
+    height : 100% ; 
+    width : 100% ; 
+}
+.profilePage-container-details-profile-detail{
+    background-color: rgb(35,34,52);;
+    
+    display: flex;
+    flex-direction: row;
+}
+.profilePage-container-details-profile-detail > div{
+    margin : 0px ; 
+    padding : 0px ; 
+    box-sizing: border-box;
+}
+
+.profilePage-container-details-profile-detail-profile{
+   height : 100% ; 
+   width : 25% ; 
+   background-color:rgb(35,34,52);
+
+   position: relative;
+}
+.profilePage-container-details-profile-detail-profile img {
+    height : 90% ; 
+    width : 80% ; 
+    border-radius: 50% ;
+    position : relative ;
+    left : 10% ;
+    top : -30% ;  
+    box-sizing: border-box;
+    border : 2px solid white ; 
+}
+.profilePage-container-details-profile-detail-detail{
+    height : 100% ; 
+    width : 75% ; 
+    background-color: rgb(35,34,52);
+ }
+
+ .profilePage-container-details-profile-detail-detail span{
+     margin-left : 10px ; 
+     display: inline-block;
+     color : white ; 
+ }
+ .profilePage-container-details-profile-detail-detail-name{
+    margin-top : 15px ; 
+    font-size : 1.8rem ; 
+ }
+ .profilePage-container-details-profile-detail-detail-branch ,
+ .profilePage-container-details-profile-detail-detail-sem{
+    font-size : 1.2rem ;
+ }
+
+
+ /* Css of about section and skills and links ans info section */
+ .profilePage-container-info ,
+ .profilePage-container-links , 
+ .profilePage-container-about , 
+ .profilePage-container-skills{
+    margin-top : 50px ; 
+    margin-bottom : 25px ; 
+
+    min-height : 70px ; 
+    height : auto  ;
+    width : 95% ; 
+    background-color: rgb(35,34,52);;
+    box-sizing: border-box;
+
+    border-radius: 20px;
+    box-shadow: 5px 10px  5px rgb(26,22,37);
+
+    overflow: hidden;
+
+ }
+.profilePage-container-links-heading span , 
+.profilePage-container-skills-heading > span{
+    display: inline-block;
+    margin-left : 20px ; 
+    cursor: pointer;
+} 
+
+.profilePage-container-skills-heading > span > input {
+    height: 40px;
+    width: 250px;
+    position: relative;
+    top: -5px;
+
+    background-color: rgb(31,27,44);
+    border : none ;
+    outline: none;
+    font-size : 1.3rem ;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius:20px;
+    padding-left : 10px ; 
+    color : rgb(208,238,237)
+}
+
+.profilePage-container-links-heading > span > input {
+    height: 40px;
+    position: relative;
+    top: -5px;
+
+    border-radius : 5px ; 
+    background-color: rgb(31,27,44);
+
+    border : none ;
+    outline: none;
+    font-size : 1.3rem ;
+    color : rgb(208,238,237) ; 
+}
+
+.profilePage-container-links-heading-input-platformname {
+    width : 200px ; 
+    margin-right : 10px ; 
+}
+.profilePage-container-links-heading-input-platformlink {
+    width : 250px ; 
+}
+
+.profilePage-container-links-heading-add  , 
+.profilePage-container-skills-heading-add {
+
+    margin-left: 0px;
+    cursor: pointer;
+
+    display: inline-block;
+    position: relative;
+    top : -2.5px ; 
+    height : 43.5px ; 
+    width : 70px ; 
+    background-color: rgb(203,213,224); 
+    line-height: 45px ;
+    text-align: center;
+    font-size: 1.5rem;
+    color : white ; 
+
+    border-top-right-radius: 20px;
+    border-bottom-right-radius:20px;
+}
+
+.profilePage-container-about span {
+    margin-left : 20px ; 
+    cursor: pointer;
+}
+
+.profilePage-container-about-done{
+    height : 40px ; 
+    width : 100px ; 
+    background-color: rgb(203,213,224); 
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    line-height: 40px;
+    /* margin-left : 10px ;  */
+    text-align: center;
+    /* margin-bottom : 5px ;  */
+    margin : 8px ; 
+    border-radius : 10px ; 
+    cursor: pointer;
+    color : rgb(255,255,255)
+}
+
+
+.profilePage-container-info-heading , 
+.profilePage-container-links-heading , 
+ .profilePage-container-skills-heading , 
+ .profilePage-container-about-heading{
+    height: 60px;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid white;
+    font-size: 2rem;
+    line-height: 60px;
+    padding-left: 10px ;
+    color : white ; 
+ }
+ .profilePage-container-about-content{
+    font-size : 1.5rem ;
+    word-wrap: break-word;
+    padding-left: 10px ; 
+    min-height : 50px ; 
+    padding-top : 10px ; 
+    color : rgb(208,238,237)
+ }
+ .profilePage-container-links-content ,
+ .profilePage-container-skills-content{
+     display: flex;
+     flex-direction: row;
+ }
+
+ .profilePage-container-links-content-skill , 
+ .profilePage-container-skills-content-skill{
+     height : 70px ; 
+     width : 100px ; 
+     font-size: 1.2rem;
+     box-sizing: border-box;
+     border : 1px solid rgb(203,213,224) ; 
+     text-align: center;
+     line-height: 70px;
+     border-radius: 20px;
+     margin : 10px ; 
+     color : white ; 
+ }
+ .profilePage-container-links-content-skill a{
+    text-decoration: none;
+    color : white ; 
+ }
+
+
+ .profilePage-container-info-content{
+     display: flex;
+     flex-direction: column;
+ }
+ .profilePage-container-info-content > div{
+     box-sizing: border-box;
+ }
+ .profilePage-container-info-content-info{
+     height : 50px ; 
+     font-size: 1.7rem ; 
+     width : 100% ; 
+     display: flex;
+     flex-direction: row;
+ }
+
+ .profilePage-container-info-content-info-name{
+     width : 200px ; 
+     font-size : 1.3rem ;
+     line-height: 50px;
+     text-align : center ; 
+     color : rgb(148,146,160) ; 
+ }
+ .profilePage-container-info-content-info-value{
+    width : 200px ; 
+    line-height: 50px;
+    font-size : 1.3rem ;
+    text-align : left ; 
+    color : white ; 
+ }
+
+ .profilePage-container-info-content-info-upload-label {
+     font-size : 1rem ;
+     position: relative;
+     top : 5px ; 
+     cursor: pointer;
+     margin-left : 50px ; 
+     background-color: lightcyan;
+     padding : 10px ; 
+ }
+ .profilePage-container-info-content-info-upload-label input{
+     display: none;
+ }
+#profilePage-container-info-content-info-add{ 
+    font-size : 1.2rem ;
+    background-color: blueviolet;
+    text-align: center;
+    line-height: 50px;
+    padding-left : 40% ; 
+    cursor: pointer;
+    margin-top : 10px ; 
+}
+
+#ppciciv{
+    background-color: darkgray;
+    border-radius: 20px ;
+    font-size : 1.2rem ;
+    padding-left : 10px ; 
+    text-align: center;
+}
+
+.profilePage-container i{
+    color : rgb(148,146,160) ; 
+    font-size : 1.5rem ;
+}
+#ppciciv i {
+    color : white ; 
+}
+#ppciciv  a{
+    text-decoration: none;
+    color : white ; 
+}
+
+.profilePage-container-details-cover-change i {
+    color : black ; 
+}
+
+
+
