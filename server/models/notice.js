@@ -13,6 +13,9 @@ const notice_schema = new mongoose.Schema({
     } , 
     img : {
         type : String
+    } , 
+    userDesignation : {
+        type : String
     }
 
 } , 

@@ -22,6 +22,9 @@ router.get('/getProfile',passport.authenticate('jwt',{session : false})  ,user_c
 
 router.post('/updateProfile',passport.authenticate('jwt',{session : false})  ,user_controller.updateProfile) ; 
 
+router.post('/deleteProperty' ,passport.authenticate('jwt',{session : false}),user_controller.deleteProperty ) ;
+
+router.get('/deleteResume' ,passport.authenticate('jwt',{session : false}) ,  resume_controller.deleteResume) ;
 router.post('/uploadResume' , [passport.authenticate('jwt',{session : false}) , resume_controller.uploadPdf]  ,resume_controller.uploadResume)
 
 router.post('/uploadCover' , [passport.authenticate('jwt',{session : false}) , resume_controller.uploadCover]  ,resume_controller.uploadCoverC)

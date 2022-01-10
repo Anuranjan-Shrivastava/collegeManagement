@@ -7,7 +7,7 @@ const datauri = require('datauri');
 
 //Controller for user SignUp
 module.exports.signup = async function(req,res){
-    console.log("A req recieved") ;
+    console.log("A SignUp Req recieved") ;
     console.log(req.body) ; 
     const {name , email , password , branch,gender , profession , semester} = req.body ; 
     let user = await usersdb.findOne({
@@ -161,11 +161,12 @@ module.exports.addnotice = async function(req, res){
     console.log("File Name :  " , req.files) ;
    
 
-    const { user, text }= req.body 
+    const { user, text , userDesignation}= req.body 
 
     let newNoticet = {
         user: user,
         text: text , 
+        userDesignation : userDesignation , 
         pdf : req.files.pdf == undefined ? null : req.files.pdf[0].filename , 
         img : req.files.img == undefined ? null : req.files.img[0].filename , 
     }
@@ -177,6 +178,7 @@ module.exports.addnotice = async function(req, res){
         text: text , 
         pdf : req.files.pdf == undefined ? null : req.files.pdf[0].filename , 
         img : req.files.img == undefined ? null : req.files.img[0].filename , 
+        userDesignation : userDesignation , 
     })
    
     if(newNotice){
@@ -231,7 +233,8 @@ module.exports.getnotice = async function(req, res){
             useremail : emailId,
             pdf : pdfToSend , 
             pdfname : pdfOriginalName ,
-            img : imgToSend 
+            img : imgToSend , 
+            designation : notice.userDesignation
         }
     
         noticeToSend.push(newNotice) ;
@@ -468,4 +471,31 @@ module.exports.pdfUpload = async function(req, res){
         }
     })
     
+}
+
+module.exports.deleteProperty = async function(req , res){
+    console.log("Delete Propery Request Recieved") ;
+    let name = req.query.propertyname ; 
+    let value = req.body.value ;
+    
+    if(name === "skill"){
+        const user = await usersdb.findOne({_id : req.user._id}) ;
+        let index = user.skills.findIndex(skill => skill === value) ;
+        user.skills.splice(index,1) ;
+        await user.save() ;
+
+    }
+    if(name === "link"){
+        const user = await usersdb.findOne({_id : req.user._id}) ;
+        let index = user.socialLinks.findIndex(link => link.platform === value) ;
+        user.socialLinks.splice(index,1) ;
+        await user.save() ;
+    }
+
+    return res.status(200).send({
+        data  : {
+            success : true , 
+            message : "Delete"
+        }
+    })
 }

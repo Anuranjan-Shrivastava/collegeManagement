@@ -7,6 +7,7 @@ import Notice from './Notice' ;
 import NoticeBoard from './NoticeBoard';
 import Profile from './Profile';
 
+
 export {
     Login , 
     Signup , 
@@ -15,6 +16,6 @@ export {
     StudentList ,
     Notice , 
     NoticeBoard ,  
-    Profile
+    Profile , 
 
 }

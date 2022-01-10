@@ -1,6 +1,6 @@
 #notice_component{
     /* border : 1px solid black ;  */
-    height : auto ;
+    height : 100vh ;
 
     width : 100vw ; 
 
@@ -17,17 +17,27 @@
 }
 
 .main-notice-component-container{
-   height : 100% ; 
+   height : 100vh ; 
    width : 60%  ;
    box-sizing: border-box;
    border : 1px solid white ; 
 
-   display: flex;
-   flex-direction: column;
+   /* display: flex;
+   flex-direction: column; */
 
    overflow-x: hidden;
+   overflow-y: hidden;
   
 
+}
+.main-notice-component-container > div {
+    height : 100% ; 
+    width : 102% ; 
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x : hidden;
 }
 
 
@@ -190,39 +200,69 @@
 
 .notices-full-container{
     margin-top : 20px ; 
-    border-top : 1px solid black ; 
+    /* border-top : 1px solid black ;  */
     height : auto ; 
-    width : 100% ; 
+    width : 110% ; 
     display: flex;
     flex-direction: column;
+
+    /* new edition */
+     /* overflow-y: scroll; */
+     /* overflow-x: hidden; */
+     /* background-color: black; */
 }
 
+.notice-full-container-nonotice {
+    height : 410px ; 
+    width : 80% ; 
+    /* border : 1px solid white ;  */
+    /* margin : auto ;  */
+    /* background-color: blue; */
+}
+
+.notice-full-container-nonotice img {
+    height : 50% ; 
+    width : 50% ; 
+    position: relative;
+    top : 10% ; 
+    left : 25% ; 
+}
+.notice-full-container-nonotice >div {
+    color : white ; 
+    /* border : 1px solid white ;  */
+    position: relative;
+    top : 60px ; 
+    font-size : 2rem ;
+    text-align: center;
+}
 .single-notice-container{
     min-height : 100px ; 
     width : 100% ; 
-    border : .5px solid black   ;
+    border-bottom : .5px solid white   ;
     display : flex ; 
     flex-direction: column;
     box-sizing: border-box;
     margin-bottom : 20px ; 
     position: relative;
+; 
 }
 /* .single-notice-container > div{
     border-top : .5px solid black ; 
 } */
 .single-notice-container-options{
     position: absolute;
-    top : 5% ; 
-    right : 2% ; 
+    top : 0% ; 
+    right : 13% ; 
     cursor: pointer;
+    color : white ; 
     /* display: none; */
 }
 .single-notice-container-options-menu{
     box-sizing: border-box;
-    border : 1px solid black ; 
+    /* border : 1px solid black ;  */
     position: absolute;
     top : 16% ; 
-    right : 2% ; 
+    right : 20% ; 
     padding : 5px ; 
     cursor: pointer;
     display: none;
@@ -235,7 +275,17 @@
     line-height : 50px ; 
     padding-left : 10px ; 
     box-sizing: border-box;
-    color : wheat
+    color : wheat;
+    /* background-color: red; */
+}
+.admin-card {
+    font-size : .8rem ;
+    position: relative;
+    top  : -17px ;
+    left : 15px ;  
+    padding : 2px ; 
+    background-color: black ; 
+    color : wheat ;
 }
 
 .single-notice-container-date{
@@ -246,7 +296,8 @@
     color : rgb(203,213,224)
 }
 .single-notice-container-content{
-    min-height : 10px ; 
+    min-height : 20px ; 
+    height : auto ; 
     width : 97..6% ;
     padding : 10px ;  
     /* box-sizing: border-box; */
@@ -254,6 +305,7 @@
     /* border-bottom : .5px solid black  ;  */
     /* background-color: aliceblue; */
     color : white ;
+
 }
 .single-notice-container-pdf{
     min-height : 10px ; 
@@ -285,6 +337,18 @@
 .single-notice-container-img img {
     height : 100% ; 
     width : 100% ; 
+}
+
+.single-notice-container-options-menu{
+    box-sizing: border-box;
+    border : 1px solid black ; 
+    position: absolute;
+    top : 5% ; 
+    right : 14% ; 
+    padding : 5px ; 
+    cursor: pointer;
+    display: none;
+    color : wheat
 }
 
 

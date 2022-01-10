@@ -23,6 +23,8 @@ class Profile extends Component {
             dp : null , 
             coverPicOptions : false , 
             dpPicOptions : false , 
+            deleteSkill : null , 
+            deleteLink : null  
            
         }
     }
@@ -257,7 +259,107 @@ class Profile extends Component {
         return new Blob([out], { type: 'application/pdf' });
     };
 
+    handleDeleteShow = (id , property) => {
+        console.log("Mouse on : " , id)
+        if(property === "skill"){
+            let element = document.getElementById(id) ;
+            let childId = element.children[0].id ;
+            let child = document.getElementById(childId) ;
+            child.style.display = "block" ;
+            this.setState({
+                deleteSkill : element.textContent
+            })
+        }
+        if(property === "link"){
+            let element = document.getElementById(id) ;
+            console.log(element.children) ;
+            let childId = element.children[1].id ;
+            let child = document.getElementById(childId) ;
+            child.style.display = "block" ;
+            this.setState({
+                deleteLink : element.textContent
+            })
+        }
+        
+    }
+    handleDeleteUnShow = (id , property) => {
+        console.log("Mouse off : " , id)
+        if(property === "skill"){
+            let element = document.getElementById(id) ;
+            let childId = element.children[0].id ;
+            let child = document.getElementById(childId) ;
+            child.style.display = "none" ;
+            this.setState({
+                deleteSkill : null
+            })
+        }
+        if(property === "link"){
+            let element = document.getElementById(id) ;
+            console.log(element.children) ;
+            let childId = element.children[1].id ;
+            let child = document.getElementById(childId) ;
+            child.style.display = "none" ;
+            this.setState({
+                deleteLink : null
+            })
+        }
+    }
+
+    deleteDetail = (property) => {
+    
+        let value ; 
+        if(property === "skill" )  value = this.state.deleteSkill ; 
+        if(property === "link") value = this.state.deleteLink
+        if(value === null)return ;
+
+        const url = `http://localhost:8000/user/deleteProperty/?propertyname=${property}` ;
+        const token = localStorage.getItem('token') ;
+        const options = {
+            method : "POST" ,
+            headers : {
+                'Content-Type' : 'application/json' ,
+                Authorization : `Bearer ${token}`
+            } ,
+            body : JSON.stringify({
+                value
+            })
+        }
+        fetch(url , options)
+          .then(res => res.json())
+          .then(data => {
+              if(data.data.success){
+                  return this.props.dispatch(updateUserProfile("update", "null")) ;
+              }
+              else{
+                  alert(`Can not delete ${property}`) ;
+              }
+          })
+        
+    }
+
+    handleDeleteResume = () => {
+        const url = `http://localhost:8000/user/deleteResume` ;
+        const token = localStorage.getItem('token') ;
+        const options = {
+            method : "GET" ,
+            headers : {
+                Authorization : `Bearer ${token}`
+            } ,
+        }
+        fetch(url , options)
+          .then(res => res.json())
+          .then(data => {
+              if(data.data.success){
+                  return this.props.dispatch(updateUserProfile("update", "null")) ;
+              }
+              else{
+                  alert(`Can Not Delete Resume`) ;
+              }
+          })
+    }
+
     render() {
+        
         let name = this.props.profile.user.name ; 
         let branch = this.props.profile.user.branch ;
         let sem = this.props.profile.user.semester ;
@@ -364,9 +466,19 @@ class Profile extends Component {
 
                         </div>
                         <div className='profilePage-container-skills-content'>
-                              {skills.map((skill) => {
+                              {skills.map((skill , idx) => {
                                   return (
-                                      <div className="profilePage-container-skills-content-skill" >{skill}</div>
+                                      <div className="profilePage-container-skills-content-skill"
+                                           id={`${idx}dx`}
+                                           onMouseEnter={() => this.handleDeleteShow(`${idx}dx` , "skill")}
+                                           onMouseLeave={() => this.handleDeleteUnShow(`${idx}dx` , "skill")} >
+                                          {skill}
+                                          <div className="skill-Canceller" 
+                                               id={`${idx}dy`}
+                                               onClick={()  => this.deleteDetail("skill")}>
+                                              <i class="fas fa-cut"></i>
+                                          </div>
+                                       </div>
                                   )
                               })}
                         </div>
@@ -394,13 +506,21 @@ class Profile extends Component {
                             </span>}                 
                         </div>
                         <div className='profilePage-container-links-content'>
-                              {links.map((prof) => {
+                              {links.map((prof , idx) => {
                                   return (
-                                      <div className="profilePage-container-links-content-skill" >
+                                      <div className="profilePage-container-links-content-skill"
+                                            id={`${idx}dlp`} 
+                                            onMouseEnter={() => this.handleDeleteShow(`${idx}dlp` , "link")}
+                                            onMouseLeave={() => this.handleDeleteUnShow(`${idx}dlp`, "link")}>
                                           <a href={prof.data.link} 
                                              target="_blank" 
                                              rel = "noreferrer">
                                           {prof.data.platform}</a>
+                                          <div className="link-Canceller"
+                                               id={`${idx}dlpc`}
+                                               onClick={()  => this.deleteDetail("link")}>
+                                              <i class="fas fa-cut"></i>
+                                          </div>
                                       </div>
                                   )
                               })}
@@ -435,6 +555,13 @@ class Profile extends Component {
                                             Select Resume
                                     </label>
                                  </div>}
+                                 {profileId === authId && url !== null && <div className="profilePage-container-info-content-info-upload">
+                                    <label className="profilePage-container-info-content-info-upload-label"
+                                            onClick = {() => this.handleDeleteResume()}>
+                                            Delete Resume
+                                    </label>
+                                 </div>}
+                                 
                             </div>}
                             {profileId === authId && desig === "stu" && <div 
                                 id="profilePage-container-info-content-info-add"

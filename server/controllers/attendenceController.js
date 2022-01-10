@@ -8,7 +8,7 @@ module.exports.getStudentList = async function(req,res){
             semester : req.body.semester , 
             branch : req.body.branch 
         }) ;
-    console.log(students) ;
+    //console.log(students) ;
     return res.json(200 , {
         data : {
             success : true ,
@@ -37,21 +37,25 @@ module.exports.updateStudent = async  function(req , res){
         await user.save() ;
         for(let i = 0 ; i < 12 ; i++){
             if(user.monthlyAttendence[i].month === month){
+                console.log(user.monthlyAttendence[i]) ;
                 if(student.value === 'present'){
+                    console.log(user.name , "Monthly updated present") ;
                     let monthtc = user.monthlyAttendence[i].tc  ; 
                     let monthca = user.monthlyAttendence[i].ca  ;
                     user.monthlyAttendence[i].tc = monthtc + 1 ; 
-                    await user.save() ;
-                    user.monthlyAttendence[i].ca = monthca +1 ;  
-                    await user.save() ;
-                    break ; 
+                    user.monthlyAttendence[i].ca = monthca + 1 ;  
 
+                    user.markModified('monthlyAttendence')
+                    await user.save() ;
                }else{
+                    console.log(user.name , "Monthly updated absent") ;
                     let monthtc = user.monthlyAttendence[i].tc  ; 
                     user.monthlyAttendence[i].tc = monthtc + 1 ; 
+
+                    user.markModified('monthlyAttendence')
                     await user.save() ;
                } 
-               break ; 
+               console.log(user.monthlyAttendence[i]) ;
             }
         }
 

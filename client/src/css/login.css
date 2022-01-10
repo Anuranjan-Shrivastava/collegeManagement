@@ -4,7 +4,7 @@
     margin : 0px ; 
     padding :0px ; 
 
-    background-image: url("../css/collegePic.png");
+    background-image: url("../css/ImpImg.jpg");
     background-repeat: no-repeat;
     background-size: cover ;
 }
@@ -72,7 +72,7 @@
     width: 100%;
     height: 100%;
     border-radius: 60px;
-    background:linear-gradient(135deg,#f33d3d, rgb(196, 83, 102));
+    background-color: rgb(23,115,235) ; 
     color: white;
     font-size: 25px;
     border: none;

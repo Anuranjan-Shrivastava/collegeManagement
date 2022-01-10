@@ -1,6 +1,6 @@
 import React from "react";
 import '../css/app.css' ;
-import { Home , Login , Signup , Attendence , Notice , Profile } from './index' ;
+import { Home , Login , Signup , Attendence , Notice , Profile  } from './index' ;
 import {BrowserRouter as Router ,Route} from 'react-router-dom' ;
 import { authenticateUser} from '../actions/auth' ;
 import { fetchUserProfile } from "../actions/profile";

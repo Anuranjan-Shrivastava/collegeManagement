@@ -1,97 +1,239 @@
 .container{
-    margin: 0;
-    padding: 0;
-    font-family: 'Times New Roman', Times, serif;
-    box-sizing: border-box;
-    height:auto;
-    align-items:center;
-    justify-content: center;
-    background-image: url("../css/collegePic.png");
+    margin : 0px ; 
+    padding : 0px ; 
+
+    height : 100vh ; 
+    width : 100vw ; 
+
+    background-image: url("../css/ImpImg.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover ;
+
+    display : flex ; 
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container > div {
+    height : 350px ; 
+    width : 500px ; 
+
+    border : 1px solid black ; 
+    border-radius: 20px ;
+
+    background-color: rgba(0,0,0,.2); 
+
+}
+
+.container-right , 
+.container-left{
     display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* CSS for name input */
+.container-left-name{
     width : 100% ; 
-    box-sizing: border-box;
+    height : 130px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
 }
-.user-details{
-    width: 100%;
-    background: white;
-    border-radius: 5px;
-    padding: 25px 30px;
-    max-width: 700px; 
-    background-color: rgba(255,255,255,.1); 
-}
- .input-box .details{
+.container-left-name span {
     display: block;
-    font-weight: 500;
-    font-size: 20px;
-    margin-bottom: 5px;
+    color : white ; 
+    padding-top : 10px ;  
+    font-size : 1.3rem  ;
 }
- .user-details .input-box{
-    margin-top: 20px;
-}
-.user-details .input-box input{
-    height: 25px;
-    width: 100%;
+.container-left-name input {
+    display: block;
+    padding-left : 20px ;  
+    font-size : 1.3rem  ;
+    
+
+    width : 400px ; 
+    height : 50px ; 
+    border:none;
     outline: none;
-    border-radius: 5px;
-    border:1px solid #ccc;
-    padding: 10px;
-    font-size: 15px;
-    justify-content: center;
-    margin-right: 10px;
+    border-radius: 20px ;
+    background-color: white;
+    box-shadow: inset 0px 0px 25px 0px #888;
+
+    color : black
 }
-.user-details .input-box input[type="email"]{
-    height: 25px;
-    width: 100%;
+
+
+/* CSS for branch input */
+.container-left-branch {
+    width : 100% ; 
+    height : 50px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
+}
+.container-left-branch span {
+    display: inline;
+    color : white ; 
+    padding-top : 10px ;  
+    font-size : 1.3rem  ;
+}
+
+.container-left-branch select {
+    width : 150px ; 
+    height : 30px ; 
+    border-radius: 20px ;
+
+    border : none ;
+    outline : none ;
+    padding-left: 20px ;
+}
+
+/* css for gender input */
+
+.container-left-gender {
+    width : 100% ; 
+    height : 50px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
+}
+.container-left-gender span {
+    display: inline;
+    color : white ; 
+    padding-top : 10px ;  
+    font-size : 1.3rem  ;
+}
+
+/* css for proffession input */
+
+
+.container-left-designation {
+    width : 100% ; 
+    height : 50px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
+}
+.container-left-designation span {
+    display: inline;
+    color : white ; 
+    padding-top : 10px ;  
+    font-size : 1.3rem  ;
+}
+
+/* css for semester */
+.container-left-semester {
+    width : 100% ; 
+    height : 50px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
+}
+.container-left-semester span {
+    display: inline;
+    color : white ; 
+    padding-top : 10px ;  
+    font-size : 1.3rem  ;
+}
+
+.container-left-semester select {
+    width : 150px ; 
+    height : 30px ; 
+    border-radius: 20px ;
+
+    border : none ;
+    outline : none ;
+    padding-left: 20px ;
+}
+
+/* css for email */
+.container-right-email{
+    width : 100% ; 
+    height : 95px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
+}
+.container-right-email span {
+    display: block;
+    color : white ; 
+    padding-top : 10px ;  
+    font-size : 1.3rem  ;
+}
+.container-right-email input {
+    display: block;
+    padding-left : 20px ;  
+    font-size : 1.3rem  ;
+    
+
+    width : 400px ; 
+    height : 50px ; 
+    border:none;
     outline: none;
-    border-radius: 5px;
-    border:1px solid #ccc;
-    padding: 10px;
-    font-size: 15px;
-    justify-content: center;
-    margin-right: 10px;
+    border-radius: 20px ;
+    background-color: white;
+    box-shadow: inset 0px 0px 25px 0px #888;
+
+    color : black
 }
-.user-details .input-box input[type="password"]{
-    height: 25px;
-    width: 100%;
+
+/* css for password & confirmPassword*/
+.container-right-confirmPassword , 
+.container-right-password{
+    width : 100% ; 
+    height : 95px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
+}
+.container-right-confirmPassword span ,
+.container-right-password span {
+    display: block;
+    color : white ; 
+    padding-top : 10px ;  
+    font-size : 1.3rem  ;
+}
+.container-right-confirmPassword input ,
+.container-right-password input {
+    display: block;
+    padding-left : 20px ;  
+    font-size : 1.3rem  ;
+    
+
+    width : 400px ; 
+    height : 50px ; 
+    border:none;
     outline: none;
-    border-radius: 5px;
-    border:1px solid #ccc;
-    padding: 10px;
-    font-size: 15px;
+    border-radius: 20px ;
+    background-color: white;
+    box-shadow: inset 0px 0px 25px 0px #888;
+
+    color : black
+}
+
+/* css for signup button */
+.container-right-button {
+    height : 80px ; 
+    width : 100% ; 
+    /* background-color: red; */
+
+    /* to centre button */
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    margin-right: 10px;
+    align-items: center;
 }
-.gender-details .gender-title{
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 40px;
+.container-right-button > div {
+    height : 50px ; 
+    width : 250px ; 
+    background-color: rgb(66,183,42);
+  
+
+    text-align: center;
+    font-size : 1.8rem ;
+    color : white ; 
+    line-height : 50px ; 
+
+    border-radius: 10px;
+    cursor : pointer
 }
-.gender-details .category{
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 500;
-}
- .options .select-title{
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 40px;
-}
- .options .category{
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 500;
-}
-.button button{
-    margin-bottom: 20px;
-    margin-left: 200px;
-    width: 300px;
-    height: 50px;
-    border-radius: 60px;
-    background:linear-gradient(135deg,#f33d3d, rgb(196, 83, 102));
-    color: white;
-    font-size: 25px;
-    border: none;
-    cursor: pointer;
-}
+
+
+
+
+

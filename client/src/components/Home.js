@@ -16,6 +16,7 @@ class Home extends React.Component{
    
 
     handleMyProfileClick = () => {
+      console.log("Profile Open Clicked") ;
       localStorage.setItem('profile' , this.props.auth.user._id) ;
       this.props.dispatch(fetchUserProfile(this.props.auth.user._id)) ;
     }
@@ -26,30 +27,31 @@ class Home extends React.Component{
                    This is auth logged In
                    <div class="subhome">
                         <br/>
-                            <h3 className="homelabel">Welcome to Government Engineering College , Bilaspur </h3> 
-                            <br/>
+                            <h3 className="homelabel">Welcome to GEC Bilaspur </h3> 
+                          
                             <div className="homebutton2">
                                
-                                    <button
-                                        onClick={this.logout}>Logout
-                                    </button>
-                                    
-                                    <br/>
-                                    <br/>
-                                    <Link to="/attendence">
-                                        <button>Attendence</button>
+                               <div>
+                                    <Link to="/attendence"  id="linky">
+                                        Attendence
                                     </Link>
-                                    <br/>
-                                    <br/>
-                                    <Link to="/notice">
-                                        <button>Notice</button>
+                               </div>
+                               
+                               <div onClick={() => this.handleMyProfileClick()}>
+                                    <Link to="/profile"  id="linky">
+                                    My Profile
                                     </Link>
-                                    <br/>
-                                    <br/>
-                                     <Link to="/profile">
-                                        <button onClick={() => this.handleMyProfileClick()}>My Profile</button>
-                                    </Link>
-                                  
+                               </div>
+                              
+                               <div>
+                                    <Link to="/notice" id="linky">
+                                     Notice Board
+                                     </Link>
+                               </div>
+                               <div onClick={this.logout} id="logoutButton">
+                                     Logout
+                               </div>
+                             
                                    
                             </div>
                     </div> 
@@ -66,12 +68,13 @@ class Home extends React.Component{
                    </h3>
                    <div className="homebutton1">
                         <Link to="/login">
-                            <button>Login</button>
+                            <button id="login">Login</button>
                         </Link>
                         <br/><br/>
                         <Link to="/signup">
-                            <button>SignUp</button>
+                            <button id="signup">SignUp</button>
                         </Link>
+                        <br/><br/>
                    </div>
            </div> 
             </div> 
@@ -90,59 +93,27 @@ export default connect(mapStateToProps)(Home) ;
 
 
 
-///////////////////////////////////////////////////
-/* <div className="subhome">
-                   
-                        <h3 className="homelabel">
-                            Government Engineering College , Bilaspur
-                        </h3>
-                        <div className="homebutton1">
-                             <Link to="/login">
-                                 <button>Login</button>
-                             </Link>
-                             <br/><br/>
-                             <Link to="/signup">
-                                 <button>SignUp</button>
-                             </Link>
-                        </div>
-                </div> */
-//////////////////////////////////////////////////
+// <button
+// onClick={this.logout}>Logout
+// </button>
+
+// <br/>
+// <br/>
+// <Link to="/attendence">
+// <button>Attendence</button>
+// </Link>
+// <br/>
+// <br/>
+// <Link to="/notice">
+// <button>Notice</button>
+// </Link>
+// <br/>
+// <br/>
+// <Link to="/profile">
+// <button onClick={() => this.handleMyProfileClick()}>My Profile</button>
+// </Link>
 
 
 
 
 
-
-
-
-
-
- /* <div class="subhome">
-                        <br/>
-                            <h3 className="homelabel">Welcome to Government Engineering College , Bilaspur </h3> 
-                            <br/>
-                            <div className="homebutton2">
-                               
-                                    <button
-                                        onClick={this.logout}>Logout
-                                    </button>
-                                    
-                                    <br/>
-                                    <br/>
-                                    <Link to="/attendence">
-                                        <button>Attendence</button>
-                                    </Link>
-                                    <br/>
-                                    <br/>
-                                    <Link to="/notice">
-                                        <button>Notice</button>
-                                    </Link>
-                                    <br/>
-                                    <br/>
-                                     <Link to="/profile">
-                                        <button>Profile</button>
-                                    </Link>
-                                  
-                                   
-                            </div>
-                    </div> */

@@ -291,7 +291,12 @@
      border-radius: 20px;
      margin : 10px ; 
      color : white ; 
+     position: relative;
+     overflow: hidden;
  }
+ 
+
+
  .profilePage-container-links-content-skill a{
     text-decoration: none;
     color : white ; 
@@ -361,6 +366,7 @@
 .profilePage-container i{
     color : rgb(148,146,160) ; 
     font-size : 1.5rem ;
+    cursor: pointer;
 }
 #ppciciv i {
     color : white ; 
@@ -372,6 +378,38 @@
 
 .profilePage-container-details-cover-change i {
     color : black ; 
+}
+
+.skill-Canceller{
+    height : 30px  ; 
+    width : 30px ; 
+    color : black ;
+
+    position: absolute;
+    top : 0px ; 
+    right : 0px ; 
+
+    display: none;
+    /* background-color: beige;  */
+ }
+ .link-Canceller i , 
+.skill-Canceller i {
+  font-size : 1rem ;   
+  position: relative;
+  top : -20px ;  
+}
+
+.link-Canceller {
+    height : 30px  ; 
+    width : 30px ; 
+    color : black ;
+
+    position: absolute;
+    top : 0px ; 
+    right : 0px ; 
+
+    display: none;
+    /* background-color: beige;  */
 }
 
 

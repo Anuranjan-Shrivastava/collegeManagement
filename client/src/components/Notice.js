@@ -3,6 +3,7 @@ import '../css/notice.css' ;
 import { connect } from 'react-redux' ;
 import { getBlogPost } from '../actions/post';
 import { NoticeBoard } from './index' ;
+import nonotice from '../css/nonotice.png' ; 
 
 class Notice extends Component {
     constructor(){
@@ -30,6 +31,7 @@ class Notice extends Component {
         formData.append('img',this.state.img) ;
         formData.append('user',this.props.auth.user.email) ;
         formData.append('text' , notice) ;
+        formData.append('userDesignation' , this.props.auth.user.designation) ;
         const options = {
             method : "POST" ,
             headers : {
@@ -70,7 +72,7 @@ class Notice extends Component {
         console.log("Cancel Notice Req") ;
         var notice = document.getElementById("notice_component") ;
         notice.style.height = "auto"
-        notice.style.overflow = "scroll" ;
+        notice.style.overflowX = "hidden" ;
         document.getElementsByClassName('noticeBlock')[0].style.transform = "scale(0,0)" ;
         document.getElementsByClassName('overlayMaterial')[0].style.transform = "scale(0,0)" ;
         this.setState({
@@ -82,9 +84,10 @@ class Notice extends Component {
 
         console.log("Option Open Clicked" , cnt) ;
 
-        var notice = document.getElementById("notice_component") ;
-        notice.style.height = "auto"
-        notice.style.overflow = "scroll" ;
+        // var notice = document.getElementById("notice_component") ;
+        // notice.style.height = "auto"
+        // notice.style.overflow = "scroll" ;
+
         document.getElementsByClassName('noticeBlock')[0].style.transform = "scale(0,0)" ;
         document.getElementsByClassName('overlayMaterial')[0].style.transform = "scale(0,0)" ;
         this.setState({
@@ -141,71 +144,81 @@ class Notice extends Component {
             <div id="notice_component">
                <div className="overlayMaterial"></div>
                <div className="main-notice-component-container">
-                    
-                    <div className="noticeBlock">
-                        <div class="noticeBlock-heading">
-                            Create a post here
-                            &emsp; &emsp;  &emsp; &emsp; &emsp;  &emsp; 
-                            <span 
-                                className="noticeBlock-cancelButton"
-                                onClick={this.cancelNoticeBlock}><strong>X</strong></span>
-                        </div>
-                        <div className="noticeBlock-mainBody">
-                            <div className="noticeBlock-mainBody-wrapper">
-                                <div className="noticeBlock-mainBody-wrapper-editor"
-                                    contenteditable="true" 
-                                    data-placeholder="What's on your mind ?">
+                    <div>
+                        <div className="noticeBlock">
+                            <div class="noticeBlock-heading">
+                                Create a post here
+                                &emsp; &emsp;  &emsp; &emsp; &emsp;  &emsp; 
+                                <span 
+                                    className="noticeBlock-cancelButton"
+                                    onClick={this.cancelNoticeBlock}><strong>X</strong></span>
+                            </div>
+                            <div className="noticeBlock-mainBody">
+                                <div className="noticeBlock-mainBody-wrapper">
+                                    <div className="noticeBlock-mainBody-wrapper-editor"
+                                        contenteditable="true" 
+                                        data-placeholder="What's on your mind ?">
+                                    </div>
+                                </div>                       
+                            </div>
+                            <div className="noticeBlock-postButton">
+                                
+                                <div className="noticeBlock-postButton-post"
+                                    onClick={this.handleNoticeSubmit}>Post</div>
+                                <div className="noticeBlock-postButton-attachment">
+                                <label>
+                                        <input type="file" 
+                                            accept="image/png, image/jpeg,image/jpg"
+                                            onChange = {(e) => this.handleChange(e,"img")}/> 
+                                        <i class="fas fa-images"></i>
+                                    </label>
+                                
                                 </div>
-                            </div>                       
-                        </div>
-                        <div className="noticeBlock-postButton">
-                            
-                            <div className="noticeBlock-postButton-post"
-                                onClick={this.handleNoticeSubmit}>Post</div>
-                            <div className="noticeBlock-postButton-attachment">
-                            <label>
-                                    <input type="file" 
-                                        accept="image/png, image/jpeg,image/jpg"
-                                        onChange = {(e) => this.handleChange(e,"img")}/> 
-                                    <i class="fas fa-images"></i>
-                                </label>
-                            
-                            </div>
-                            <div className="noticeBlock-postButton-attachment">
-                            <label>
-                                    <input type="file" 
-                                        accept="application/pdf" 
-                                        onChange = {(e) => this.handleChange(e,"pdf")}/> 
-                                <i class="fas fa-file-pdf"></i>
-                                </label>
+                                <div className="noticeBlock-postButton-attachment">
+                                <label>
+                                        <input type="file" 
+                                            accept="application/pdf" 
+                                            onChange = {(e) => this.handleChange(e,"pdf")}/> 
+                                    <i class="fas fa-file-pdf"></i>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="preNotice">
-                        <div className="preNotice-heading">
-                            Government Engineering College , Bilaspur
-                            <br/>
-                            Notice Board
-                        </div>
-                        <div className="preNotice-edit-notice">
-                            <div onClick={this.handlePreNoticeClick}>
-                                Click to add a notice 
+                        <div className="preNotice">
+                            <div className="preNotice-heading">
+                                Government Engineering College , Bilaspur
+                                <br/>
+                                Notice Board
+                            </div>
+                            <div className="preNotice-edit-notice">
+                                <div onClick={this.handlePreNoticeClick}>
+                                    Click to add a notice 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="notices-full-container">
-                    {  
-                        posts.map((post , index) => {
-                            
-                            return (
-                                <NoticeBoard 
-                                        post={post}
-                                        num={index}
-                                        openOption={this.handleClickToOpenOption}
-                                        deletePost={this.handleDeletePost}/>
-                            )
-                        })
-                    }
+                        <div className="notices-full-container">
+                        { posts.length > 0 &&  
+                            posts.map((post , index) => {
+                                
+                                return (
+                                    <NoticeBoard 
+                                            post={post}
+                                            num={index}
+                                            openOption={this.handleClickToOpenOption}
+                                            deletePost={this.handleDeletePost}/>
+                                )
+                            })
+                        }
+                        {
+                            posts.length === 0 && 
+                            <div className="notices-full-container">
+                                <div className="notice-full-container-nonotice">
+                                    <img src={nonotice} alt="No Notice Found" />
+                                    <div>No Notice Found...</div>
+                                </div>
+                            </div>
+                        }
+                        </div>
                     </div>
                </div>
               

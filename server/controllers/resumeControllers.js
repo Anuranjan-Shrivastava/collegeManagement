@@ -178,4 +178,24 @@ module.exports.uploadDp  = async function(req,res) {
     })
 }
 
+// comtroller for deleting resume 
+
+module.exports.deleteResume = async function(req , res) {
+    console.log("About to delete this resume ")
+    let id = req.user._id ; 
+    let user = await usersdb.findOne({_id : id}) ;
+    let oldResumePath = `../Server${user.resume}` ;
+    fs.unlinkSync(oldResumePath) ;
+    user.resume = "" ;
+    user.markModified('resume') ;
+    await user.save() ;
+
+    return res.status(200).send({
+        data : {
+            success : true 
+        }
+    })
+
+}
+
 

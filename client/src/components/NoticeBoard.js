@@ -56,6 +56,7 @@ class NoticeBoard extends Component {
             url = URL.createObjectURL(blob);
         }
         let img = this.props.post.img ; 
+        let designation = this.props.post.designation ; 
         let pdfName = this.props.post.pdfname.length > 17 ? this.props.post.pdfname.substring(0,17).concat("..") : this.props.post.pdfname ; 
         return (
             <div className="single-notice-container">
@@ -71,6 +72,7 @@ class NoticeBoard extends Component {
                      onClick={() => this.handleProfileClick(posterId)}>
                      <Link to="/profile"
                            style={{ textDecoration: 'none' , color : 'wheat'}}>{name}</Link>
+                    {designation === "fac" && <span className="admin-card">Faculty</span>}
                 </div>
                 <div className="single-notice-container-date">
                     <i>posted on</i> {date}
