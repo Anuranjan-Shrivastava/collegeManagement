@@ -1,0 +1,523 @@
+.assignment{
+    height : 100vh ; 
+    width : 100vw ; 
+    color : black ;
+    overflow: hidden;
+   
+}
+
+/* assignment for student editor */
+.assignment-container{
+    height : 100% ; 
+    width : 100% ; 
+    background-color: rgb(31,27,44);
+}
+
+.assignment-container-heading {
+    height : 15% ; 
+    width : 100% ; 
+    color : black ; 
+    /* background-color: yellow; */
+
+    font-size : 3rem ;
+    line-height: 100px;
+    padding-left : 50px ; 
+
+    box-sizing: border-box;
+
+    color : beige ; 
+    text-decoration: underline;
+}
+.assignment-container-heading i {
+    color : yellow ; 
+}
+
+.assignment-container-box { 
+    height : 85% ; 
+    width : 105%  ;
+    /* background-color: blue ; */
+
+    border-top : 2px solid white ;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.assignment-container-box > div {
+    height : 400px ; 
+    width : 400px ; 
+
+    box-sizing: border-box;
+    border : 1px solid black ; 
+
+    margin : 20px ; 
+}
+
+.assignment-container-box-element { 
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: rgb(56,55,72);
+    box-shadow: 20px 10px  5px rgb(26,22,37);
+
+    border-radius: 10px;
+
+
+}
+.assignment-container-box-element > div {
+   
+    width : 100% ; 
+
+    /* border : 1px solid black ;  */
+    box-sizing: border-box;
+}
+
+.assignment-container-box-element-lastDate , 
+.assignment-container-box-element-assignmentName , 
+.assignment-container-box-element-subName , 
+.assignment-container-box-element-teacherName { 
+    font-size : 1.8rem ;
+    line-height : 50px ; 
+    padding-left : 10px  ;
+    height : 50px ; 
+    color : white ; 
+}
+
+.assignment-container-box-element-content {
+    height : 150px ; 
+    /* background-color: red ; */
+    box-sizing: border-box;
+}
+
+.assignment-container-box-element-content-img {
+    height : 75px ; 
+    width : 100% ; 
+    box-sizing: border-box;
+    /* background-color: grey; */
+    padding-left : 10px ; 
+    display: flex;
+    flex-direction: row;
+}
+.assignment-img-container { 
+    height : 100% ; 
+    width : 100px ; 
+
+    /* background-color: black; */
+}
+.assignment-img-container img { 
+    height : 100% ; 
+    width : 100% ; 
+}
+.assignment-img-name-container {
+    height : 100% ; 
+    font-size : 1.4rem ;
+    line-height: 75px;
+    color : white ; 
+    padding-left : 5px ; 
+    /* background-color: brown; */
+
+}
+
+.assignment-container-box-element-content-pdf {
+    box-sizing: border-box;
+    height : 75px ; 
+    /* background-color: aqua; */
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.assignment-pdf-container {
+    height : 50px ; 
+    width : 200px ; 
+    background-color: grey;
+    border-radius: 20px ; ;
+    line-height: 50px;
+    font-size : 1.4rem ;
+    text-align: center;
+}
+.assignment-pdf-container a{
+    color : black ;
+    text-decoration: none; 
+}
+
+.submitButton {
+    height : 40px ; 
+    width : 150px ; 
+
+    box-sizing: border-box;
+    background-color: green;
+    border-radius: 20px ;
+    margin : auto ; 
+    margin-right : 20px ; 
+    margin-left : 20px ; 
+    color : white ; 
+    text-align: center;
+    line-height : 40px ; 
+    font-size : 1.5rem ;
+
+    display: inline-block;
+    cursor: pointer;
+
+}
+.submittedButton {
+    margin-left : 25%  ; 
+    width : 200px ; 
+}
+
+
+
+/* assignment css for teacher */
+.assignment-container-creater{
+    background-color: rgb(31,27,44);
+
+    display : flex ; 
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+
+    padding-top : 50px ; 
+    padding-left : 50px ; 
+
+   
+}
+
+.assignment-container-creater-details{
+    height : 0px ; 
+    width : 90% ; 
+    border : 5px solid whitesmoke ; 
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+
+    overflow: hidden;
+
+    transition : .5s ; 
+
+    background-color: rgb(56,55,72);
+
+    position: relative;
+
+}
+.assignment-creater-canceller {
+    position : absolute ;
+    right : 0px ; 
+    text-align: center;
+    line-height : 50px ; 
+    font-size : 1.5rem ;
+    height : 50px ; 
+    color : yellow; 
+    width : 50px ; 
+    cursor: pointer;
+    /* background-color: greenyellow; */
+
+}
+.assignment-container-creater-details-name{
+    box-sizing: border-box;
+    height: 100% ; 
+    width : 300px;
+    /* background-color: orange; */
+}
+
+.subjectName {
+    height : 40px ; 
+    width : 250px ; 
+
+    margin : 20px ; 
+    font-size : 1.4rem ;
+
+    outline : none ;
+    border  : none ;
+
+    border-radius : 10px ; 
+}
+input[type="file"]{
+    display: none ;
+}
+.fileInput {
+    display: block;
+    height : 50px ; 
+    width : 180px ; 
+    line-height: 50px;
+    background-color: white;
+   
+    font-size : 1.4rem ;
+    text-align: center;
+    margin : 10px ; 
+    cursor: grab;
+
+}
+.assignment-container-creater-details-select{
+    box-sizing: border-box;
+    height: 100% ; 
+    width : 600px;
+    /* background-color: purple; */
+}
+
+
+.assignment-container-creater-details-content{
+    box-sizing: border-box;
+    height: 100% ; 
+    width : 300px;
+    /* background-color: blue; */
+}
+
+.assignment-container-creater-button{
+    height : 50px ; 
+    width : 300px ; 
+    border-radius: 20px;
+    
+    margin-top : 20px ; 
+    margin-bottom : 20px ; 
+
+    text-align: center;
+    line-height: 50px ;
+    font-size : 1.5rem ;
+
+    background-color: yellow;
+    color : black ; 
+
+    cursor: pointer;
+    transition : .5s ; 
+}
+
+
+.assignment-container-display {
+    height : 630px ; 
+    width : 100% ; 
+    /* background-color: rebeccapurple; */
+    box-sizing: border-box;
+
+    border-top : 2px solid white ;
+}
+.assignment-container-display-wrap {
+    height : 100% ;  
+    width : 102% ; 
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.assignment-container-display-wrap > div {
+    height : 300px ; 
+    width : 350px ; 
+
+    background-color: rgb(56,55,72);
+    box-shadow: 20px 10px  5px rgb(26,22,37);
+
+    margin : 50px ; 
+}
+.assignment-container-display-wrap-element{
+    display: flex;
+    flex-direction: column; 
+}
+
+
+.assignment-container-display-wrap-element-lastDate , 
+.assignment-container-display-wrap-element-assignmentName , 
+.assignment-container-display-wrap-element-subName , 
+.assignment-container-display-wrap-element-branchSem {
+    font-size : 1.5rem ;
+    line-height : 50px ; 
+    padding-left : 10px  ;
+    height : 50px ; 
+    color : white ; 
+}
+
+.openButton {
+    height : 40px ; 
+    width : 300px ; 
+    box-sizing: border-box;
+    background-color: green;
+    border-radius: 20px ;
+    margin : auto ; 
+    margin-top : 20px ; 
+    color : white ; 
+    text-align: center;
+    line-height : 40px ; 
+    font-size : 1.5rem ;
+    cursor: pointer;
+
+}
+
+
+/* single mode for teacher display */
+.assignment-container-single-content {
+    height : 100vh ; 
+    width : 101% ; 
+    /* background-color: rebeccapurple; */
+    box-sizing: border-box;
+
+    /* border-top : 2px solid white ; */
+   
+
+    overflow-y: scroll;
+
+ 
+}
+
+
+
+.assignment-container-single-content-first {
+    height : 200px ; 
+    width : 100% ; 
+    /* background-color: red; */
+    border-bottom : 1px solid white ; 
+    position: relative;
+}
+.goBackButton{
+    position : absolute ; 
+    left : 45% ; 
+    top : 0% ; 
+    height : 40px ; 
+    width : 100px ; 
+    background-color: green ; 
+    color : white ; 
+    font-size : 1.2rem ;
+    text-align: center;
+    line-height : 40px ; 
+    cursor: pointer;
+}
+.assignment-container-single-content-first-heading { 
+    font-size : 1.8rem ;
+    color : white ; 
+    padding-left : 50px ;
+    padding-top : 20px ;  
+    text-decoration: underline;
+}
+.assignment-container-single-content-first-actualcontent {
+    /* background-color: aqua; */
+    margin-top : 20px ; 
+
+    display: flex;
+    flex-direction: row;
+}
+.assignment-container-single-content-first-actualcontent > div {
+    height : 120px ; 
+    width : 100px ; 
+    background-color: grey;
+    display: inline-block;
+    margin-left : 50px ; 
+
+    font-weight: 600 ;
+    text-align: center;
+    line-height: 120px;
+    font-size: 2rem;
+}
+.assignment-container-single-content-first-actualcontent > div > img {
+    height : 100% ; 
+    width : 100% ; 
+}
+.assignment-container-single-content-first-actualcontent > div > a {
+    color : white ; 
+    text-decoration: none;
+    
+}
+
+
+
+.assignment-container-single-content-second {
+    height : auto ; 
+    width : 100% ; 
+    /* background-color: red; */
+    margin-bottom : 30px ; 
+}
+
+.assignment-container-single-content-second-heading { 
+    font-size : 1.8rem ;
+    font-weight: 900;
+    color : white ; 
+    padding-left : 50px ;
+    padding-top : 20px ; 
+
+    text-decoration: underline;
+}
+
+.assignment-container-single-content-second-actualcontent {
+    min-height : 50px ; 
+    width : 100% ; 
+    margin-top : 20px ; 
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+.assignment-container-single-content-second-actualcontent > div {
+    height : 70px ; 
+    width : 100px ; 
+    /* display: inline-block; */
+    background-color: green;
+    color : white ; 
+    margin : 20px ; 
+    margin-left : 50px ; 
+    text-align: center;
+}
+.assignment-container-single-content-second-actualcontent > div > a {
+  color : white ; 
+  text-decoration: none;
+}
+
+
+
+.assignment-container-single-content-third { 
+    height : auto ; 
+    width : 100% ; 
+    /* background-color: red; */
+    margin-bottom : 30px ; 
+}
+.assignment-container-single-content-third-heading { 
+    font-size : 1.8rem ;
+    font-weight: 900;
+    color : white ; 
+    padding-left : 50px ;
+    padding-top : 20px ;
+    
+    text-decoration: underline;
+}
+.assignment-container-single-content-third-actualcontent { 
+    min-height : 120px ; 
+    width : 100% ; 
+    margin-top : 20px ; 
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.assignment-container-single-content-third-actualcontent > div {
+    height : 80px ; 
+    width : 100px ; 
+    /* display: inline-block; */
+    background-color: red;
+    color : white ; 
+    
+    margin : 20px ; 
+    margin-left : 50px ; 
+    text-align: center;
+}
+
+
+
+
+

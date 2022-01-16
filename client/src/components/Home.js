@@ -48,6 +48,11 @@ class Home extends React.Component{
                                      Notice Board
                                      </Link>
                                </div>
+                               <div>
+                                    <Link to="/assignment" id="linky">
+                                     Assignment
+                                     </Link>
+                               </div>
                                <div onClick={this.logout} id="logoutButton">
                                      Logout
                                </div>

@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux' ;
+import { Link } from 'react-router-dom' ;
+import {fetchUserProfile}  from '../actions/profile' ;
 
 class StudentList extends Component {
 
@@ -42,14 +45,22 @@ class StudentList extends Component {
          }
 
     }
+    handleProfileClickOpen = (userId) => {
+        console.log("Clicked HandleProfile CLicked")
+        localStorage.setItem("profile" , userId) ;
+        this.props.dispatch(fetchUserProfile(userId)) ;
+    }
     render() {
+        console.log(this.props) ;
         let name = this.props.student.name.length > 17 ? this.props.student.name.substring(0,15) + ".." : this.props.student.name ;
         return (
             <div className="student-list-displayer">
-                <div className="student-list-displayer-name">
-                    {name}
-               </div>
-               <div className="student-list-displayer-present"
+               
+                <div className="student-list-displayer-name"
+                     onClick={() => this.handleProfileClickOpen(this.props.student._id)}>
+                        <Link to="/profile" id="linkyName">{name}</Link>
+                </div>
+                <div className="student-list-displayer-present"
                     id={this.state.presentClick === true ? "presentClicked" : "neutal"}
                     onClick={() => this.handleClick2("present")}>
                      Present
@@ -65,4 +76,10 @@ class StudentList extends Component {
     }
 }
 
-export default StudentList;
+function mapStateToProps({auth}){
+    return {
+        auth , 
+    }
+}
+
+export default connect(mapStateToProps)(StudentList);

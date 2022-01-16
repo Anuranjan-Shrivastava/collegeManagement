@@ -226,11 +226,11 @@ class Attendence extends React.Component{
                                     <option value="May">May</option>
                                     <option value="June">June</option>
                                     <option value="July">July</option>
-                                    <option value="eight">Aug</option>
-                                    <option value="eight">Sep</option>
-                                    <option value="eight">Oct</option>
-                                    <option value="eight">Nov</option>
-                                    <option value="eight">Dec</option>
+                                    <option value="Aug">Aug</option>
+                                    <option value="Sep">Sep</option>
+                                    <option value="Oct">Oct</option>
+                                    <option value="Nov">Nov</option>
+                                    <option value="Dec">Dec</option>
                     </select>
                     <br/>   
                     {this.state.studentList === null &&

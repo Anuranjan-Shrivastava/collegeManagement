@@ -24,3 +24,9 @@ export const FETCH_USER_PROFILE_FAILURE = "FETCH_USER_PROFILE_FAILURE" ;
 //action type to update profile 
 export const UPDATE_PROFILE = "UPDATE_PROFILE" ;
 
+
+// assignment related action types
+export const FETCH_ASSIGNMENT_SUCCESS = "FETCH_ASSIGNMENT_SUCCESS" ;
+export const FETCH_ASSIGNMENT_FAILURE = "FETCH_ASSIGNMENT_FAILURE" ;
+
+

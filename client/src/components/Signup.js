@@ -156,7 +156,7 @@ class Signup extends React.Component{
                         { this.state.profession === "stu" && 
                          <div className="container-left-semester">
                                 <span className="details">Semester : </span>
-                                <select  onChange={(e) => this.handleChange("semester" ,e.target.value)} >
+            <select  onChange={(e) => this.handleChange("semester" ,e.target.value)} >
                                     <option >Semester</option>
                                     <option value="one" >1</option>
                                     <option value="two">2</option>
@@ -166,7 +166,7 @@ class Signup extends React.Component{
                                     <option value="six">6</option>
                                     <option value="seven">7</option>
                                     <option value="eight">8</option>
-                                </select>
+                                </select>                    
                          </div>
                         }
                       

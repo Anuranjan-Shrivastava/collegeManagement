@@ -6,6 +6,9 @@ import StudentList from './StudentList';
 import Notice from './Notice' ;
 import NoticeBoard from './NoticeBoard';
 import Profile from './Profile';
+import Assignment from './Assignment';
+import AssignmentStudent from './AssignmentStudent';
+import AssignmentTeacher from './AssignmentTeacher';
 
 
 export {
@@ -17,5 +20,8 @@ export {
     Notice , 
     NoticeBoard ,  
     Profile , 
+    Assignment , 
+    AssignmentStudent , 
+    AssignmentTeacher
 
 }

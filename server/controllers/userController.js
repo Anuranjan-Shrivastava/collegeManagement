@@ -95,7 +95,8 @@ module.exports.signup = async function(req,res){
             skills : [] , 
             socialLinks : [] , 
             cover : "" , 
-            dp : ""
+            dp : "" , 
+            assignment : [] , 
         }) ;
 
 
@@ -155,6 +156,8 @@ module.exports.login = async function(req,res){
     
   
 }
+
+// controller for notice handler
 
 module.exports.addnotice = async function(req, res){
     console.log("In add notce trying to add pdf & images : " ) ;
@@ -350,6 +353,8 @@ module.exports.pdfUpload = async function(req, res){
  }
 
 
+
+//  controller related to user profile
  module.exports.getProfile = async function(req, res){
      console.log("Profile Fetching Request Recieved") ;
      const userId = req.query.user ; 

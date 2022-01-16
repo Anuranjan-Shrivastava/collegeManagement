@@ -58,6 +58,9 @@ const user_schema = new mongoose.Schema({
     } , 
     dp : {
         type : String
+    } , 
+    assignment : {
+        type : Array
     }
 }) ;
 
