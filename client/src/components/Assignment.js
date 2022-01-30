@@ -77,7 +77,9 @@ class Assignment extends Component {
         
         console.log("From Upload Assignment " , this.state) ;
         const {subName , branch , semester , date , assignmentName , assignpdf , assignPicture } = this.state ; 
-        if(!subName || !branch || !semester || !date)return ;
+        if(!subName || !branch || !semester || !date){
+            alert("All details are required")  ; return ;
+        }
         let creater = document.getElementsByClassName('assignment-container-creater-details')[0] ;
                 creater.style.height = "0px" ;
                 this.setState({
@@ -248,7 +250,7 @@ class Assignment extends Component {
                             </div>}
 
                      </div>}
-                    {!this.state.singleAssignmentMode&&  <div className="assignment-container-display">
+                    {!this.state.singleAssignmentMode &&  <div className="assignment-container-display">
                          <div className="assignment-container-display-wrap">
                              {assignments.map((assignment , idx) => {
                                  return (
