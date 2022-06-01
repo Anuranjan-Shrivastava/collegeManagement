@@ -9,7 +9,7 @@ class Login extends React.Component{
         super() ;
         this.state = {
             email : null , 
-            password : null
+            password : null , 
         }
     }
 
@@ -20,22 +20,35 @@ class Login extends React.Component{
     }
 
     handleSubmit = () => {
+        // this.setState({
+        //     credential : false 
+        // })
         console.log("Login Pressed") ;
         const {email , password} = this.state ;
         if(!email && !password)return ;
         this.props.dispatch(loginUser(email , password)) ;
     }
 
+    handlepassword = () => {
+        this.setState({
+            forgetPwd : true 
+        })
+    }
+
 
     render(){
-        const { isLoggedIn } = this.props.auth ;
+        const { isLoggedIn , wrongCredentials } = this.props.auth ;
+        
         if(isLoggedIn){
             return <Redirect to="/" />
+        }
+        if(this.state.forgetPwd){
+            return <Redirect to="/password-recovery" />
         }
         return (
             <div className="primary">
                 <div className="preprimary">
-                    <h1>Login to GEC Bilaspur</h1>
+                    {wrongCredentials && <h2>wrong userid/password</h2>}
                     <div className="preprimary-email-input">
                         <input 
                                 type="email" 
@@ -52,6 +65,9 @@ class Login extends React.Component{
                     <div className="login_button">
                                 <button onClick={this.handleSubmit}>Login</button>
                     </div>
+                    {wrongCredentials && <div className="login_button falsepwd">
+                                <button onClick={this.handlepassword}>Forget Password</button>
+                    </div>}
                 </div>
             </div> 
         )

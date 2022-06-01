@@ -18,24 +18,24 @@ class Signup extends React.Component{
             confirmPassword : null , 
             semester : null ,
             button : false ,
-            success : false 
+            process : false , 
+            success : false ,
+            rollno : null 
         }
     }
 
-   handleChange =  async (field , value) => {
-     
-        await  this.setState({
+   handleChange =   (field , value) => {
+       console.log(field , value) ;
+       this.setState({
            [field] : value 
        }) ;
     
    }
    onFormSubmit =  () => {
-       console.log("SignUp Pressed") ;
-    //    if(this.state.button === true)return ;
-    //    this.setState({
-    //        button : true 
-    //    }) ; 
-    
+       if(this.state.process === true)return ;
+       this.setState({
+           process : true 
+       })
        let {
         name , 
         branch ,
@@ -44,15 +44,33 @@ class Signup extends React.Component{
         email  , 
         password  , 
         confirmPassword  , 
-        semester  , 
+        semester  ,
+        rollno 
        } = this.state ; 
        if(semester === null)semester= "null" ;
        if(!name || !branch || !gender || !profession || !semester 
-       || !email || !password || !confirmPassword){
-        console.log("Something Missing") ;
-        return ;
+           || !email || !password || !confirmPassword){
+            console.log("Something Missing") ;
+            this.setState({
+                process : false 
+            });
+            return ;
        }
        //Please Match Password and confirm Password
+       if(password !== confirmPassword){
+           alert("Password & Confirm Password are not the same") ;
+           this.setState({
+             process : false 
+           });
+           return ;
+       }
+       if(profession === "stu" && rollno === null){
+           alert("Enter roll number") ;
+           this.setState({
+            process : false 
+            });
+           return ;
+       }
        const formBody = {
         name , 
         branch ,
@@ -61,7 +79,7 @@ class Signup extends React.Component{
         email  , 
         password  , 
         semester  , 
-
+        rollno
        }
        let url = "http://localhost:8000/user/signup" ;
        let options = {
@@ -74,9 +92,10 @@ class Signup extends React.Component{
        fetch(url , options).then((res) => res.json()).then(async (data) => {
         console.log(data) ;   
         if(data.data.success){
-               await this.setState({
-                   success : true 
-               })
+              this.setState({
+                process : false ,
+                success : true 
+              });
            }
        }) ;
 
@@ -156,7 +175,7 @@ class Signup extends React.Component{
                         { this.state.profession === "stu" && 
                          <div className="container-left-semester">
                                 <span className="details">Semester : </span>
-            <select  onChange={(e) => this.handleChange("semester" ,e.target.value)} >
+                                <select  onChange={(e) => this.handleChange("semester" ,e.target.value)} >
                                     <option >Semester</option>
                                     <option value="one" >1</option>
                                     <option value="two">2</option>
@@ -167,6 +186,16 @@ class Signup extends React.Component{
                                     <option value="seven">7</option>
                                     <option value="eight">8</option>
                                 </select>                    
+                         </div>
+                        }
+                        { this.state.profession === "stu" && 
+                         <div className ="container-left-rollno">  
+                             <span className="details">Roll No. </span>
+                             <input 
+                                 type ="text" 
+                                 placeholder="Roll No."  
+                                 autoComplete="off"
+                                 onChange={(e) => this.handleChange("rollno" ,e.target.value)}/>        
                          </div>
                         }
                       
@@ -197,8 +226,9 @@ class Signup extends React.Component{
                                         onChange={(e) => this.handleChange("confirmPassword" ,e.target.value)}/>
                         </div>
                         <div className="container-right-button">
-                             <div onClick = {() => this.onFormSubmit()}>Sign Up</div>
-                         
+                             <div 
+                                onClick = {() => this.onFormSubmit()}
+                                style={this.state.process ? {"cursor":"not-allowed"} : {"cursor":"pointer"}}>Sign Up</div>                       
                        </div>
                    </div>
            </div>
@@ -207,40 +237,3 @@ class Signup extends React.Component{
 }
 
 export default Signup ; 
-
-
-
-//                         <div className="input-box">
-//                             <span className="details">Email : </span>
-//                             <input type ="email" 
-//                                    placeholder="Email-id"
-//                                    autoComplete="off" 
-//                                    required
-//                                    onChange={(e) => this.handleChange("email" ,e.target.value)}/>
-//                         </div>
-//                         <br/>
-//                         <div className="input-box">
-//                             <span className="details">Password : </span>
-//                             <input type ="password" 
-//                                    placeholder="Password"
-//                                    autoComplete="off"
-//                                    required 
-//                                    onChange={(e) => this.handleChange("password" ,e.target.value)}/>
-//                         </div>
-//                         <br/>
-//                         <div className="input-box">
-//                             <span className="details">Confirm Password : </span>
-//                             <input type ="password" 
-//                                    placeholder="Confirm Password"
-//                                    autoComplete="off" 
-//                                    required
-//                                    onChange={(e) => this.handleChange("confirmPassword" ,e.target.value)}/>
-//                         </div>
-//                         <br/>
-//                         <div className="button">
-//                             <button onClick = {() => this.onFormSubmit()}>
-//                                 SignUp
-//                             </button>
-                           
-//                         </div>
-//                     </div>

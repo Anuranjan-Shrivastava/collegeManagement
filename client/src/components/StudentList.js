@@ -55,7 +55,7 @@ class StudentList extends Component {
         let name = this.props.student.name.length > 17 ? this.props.student.name.substring(0,15) + ".." : this.props.student.name ;
         return (
             <div className="student-list-displayer">
-               
+                <div className='student-list-displayer'>0123456789</div>
                 <div className="student-list-displayer-name"
                      onClick={() => this.handleProfileClickOpen(this.props.student._id)}>
                         <Link to="/profile" id="linkyName">{name}</Link>

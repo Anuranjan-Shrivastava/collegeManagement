@@ -16,7 +16,7 @@
 }
 
 .container > div {
-    height : 350px ; 
+    height : 390px ; 
     width : 500px ; 
 
     border : 1px solid black ; 
@@ -126,12 +126,14 @@
     /* background-color: red; */
     padding-left : 20px ;
 }
+.container-left-rollno span , 
 .container-left-semester span {
     display: inline;
     color : white ; 
     padding-top : 10px ;  
     font-size : 1.3rem  ;
 }
+
 
 .container-left-semester select {
     width : 150px ; 
@@ -141,6 +143,21 @@
     border : none ;
     outline : none ;
     padding-left: 20px ;
+}
+
+/* css for roll number */
+.container-left-rollno{
+    width : 100% ; 
+    height : 50px ; 
+    /* background-color: red; */
+    padding-left : 20px ;
+}
+.container-left-rollno input {
+    height : 30px ; 
+    width : 200px ; 
+    outline: none ;
+    border-radius : 20px ; 
+    padding-left : 20px ; 
 }
 
 /* css for email */

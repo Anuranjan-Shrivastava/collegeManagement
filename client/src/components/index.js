@@ -9,9 +9,17 @@ import Profile from './Profile';
 import Assignment from './Assignment';
 import AssignmentStudent from './AssignmentStudent';
 import AssignmentTeacher from './AssignmentTeacher';
+import Extra from './Extra';
+import AttendenceV2 from './AttendenceV2';
+import PasswordChange from './PasswordChange';
+import Newpassword from './Newpassword';
+import Notes from './Notes';
+import NotesTeacher from './NotesTeacher' ;
+import NotesStudent from './NotesStudent' ;
 
 
 export {
+    Extra , 
     Login , 
     Signup , 
     Home , 
@@ -22,6 +30,12 @@ export {
     Profile , 
     Assignment , 
     AssignmentStudent , 
-    AssignmentTeacher
+    AssignmentTeacher , 
+    AttendenceV2 , 
+    PasswordChange , 
+    Newpassword , 
+    Notes , 
+    NotesTeacher , 
+    NotesStudent 
 
 }

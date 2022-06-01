@@ -32,8 +32,8 @@
     background-color: rgba(0,0,0,.5); 
 
 }
-.preprimary h1{
-    color : white ;
+.preprimary h2{
+    color : red ;
 }
 .preprimary > div {
    height : 50px ; 
@@ -77,4 +77,8 @@
     font-size: 25px;
     border: none;
     cursor: pointer;
+}
+
+.falsepwd button{
+    background-color: red;
 }

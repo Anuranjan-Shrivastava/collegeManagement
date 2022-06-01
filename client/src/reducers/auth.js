@@ -10,7 +10,8 @@ const initialAuthState = {
     user : {} ,
     error : null , 
     isLoggedIn : false , 
-    inProgress : false 
+    inProgress : false  , 
+    wrongCredentials : false , 
 }
 
 export default function auth(state = initialAuthState , action){
@@ -29,14 +30,24 @@ export default function auth(state = initialAuthState , action){
                isLoggedIn : true ,
                inProgress : false ,
                error : null  , 
-               dp : action.dp
+               dp : action.dp , 
+               wrongCredentials : false , 
            }
         }
         case LOGIN_FAILED :{
+            if(action.error === "id/pwd"){
+                return {
+                    ...state ,
+                    inProgress : false ,
+                    error : action.error , 
+                    wrongCredentials : true 
+                }
+            }
             return {
                 ...state ,
                 inProgress : false ,
-                error : action.err
+                error : action.err , 
+                wrongCredentials : false , 
             }
         }
         case LOGOUT : {

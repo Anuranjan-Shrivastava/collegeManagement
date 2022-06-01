@@ -25,18 +25,6 @@ const user_schema = new mongoose.Schema({
         type : String , 
         required : true 
     },
-    totalClasses : {
-        type : Number , 
-        required : true 
-    },
-    classesAttended : {
-        type : Number , 
-        required : true 
-    },
-    monthlyAttendence : {
-        type : Array , 
-        required : true 
-    } ,
     gender : {
         type : String , 
         required : true
@@ -61,6 +49,15 @@ const user_schema = new mongoose.Schema({
     } , 
     assignment : {
         type : Array
+    }, 
+    notes : {
+        type : Array
+    },
+    attendence : {
+        type : mongoose.ObjectId , 
+    }, 
+    rollno : {
+        type : String 
     }
 }) ;
 

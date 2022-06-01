@@ -53,6 +53,11 @@ class Home extends React.Component{
                                      Assignment
                                      </Link>
                                </div>
+                               <div>
+                                    <Link to="/notes" id="linky">
+                                     Notes
+                                     </Link>
+                               </div>
                                <div onClick={this.logout} id="logoutButton">
                                      Logout
                                </div>

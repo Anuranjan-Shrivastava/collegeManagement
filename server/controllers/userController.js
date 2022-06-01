@@ -1,5 +1,6 @@
 const usersdb = require('../models/user') ;
 const noticedb = require('../models/notice') ;
+const attendencedb = require('../models/attendence');
 const multer = require('multer') ;
 const fs = require('fs') ;
 const jwt = require('jsonwebtoken') ;
@@ -7,79 +8,14 @@ const datauri = require('datauri');
 
 //Controller for user SignUp
 module.exports.signup = async function(req,res){
-    console.log("A SignUp Req recieved") ;
     console.log(req.body) ; 
-    const {name , email , password , branch,gender , profession , semester} = req.body ; 
+    const {name , email , password , branch,gender , profession , semester,rollno} = req.body ; 
     let user = await usersdb.findOne({
         email : email
     }) ;
     if(!user){
         //create user
-        //ta -> total Classes 
-        //ca -> class Attended
-        let monthlyAttendenceArray = [
-            {
-                month : "Jan",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Feb",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Mar",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Apr",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "May",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "June",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "July",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Aug",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Sep",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Oct",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Nov",
-                tc : 0 , 
-                ca : 0
-            },
-            {
-                month : "Dec",
-                tc : 0 , 
-                ca : 0
-            }
-        ]
-        let newUser = await usersdb.create({
+        let newUserProfile = await usersdb.create({
             name : name , 
             email : email , 
             password : password , 
@@ -87,9 +23,6 @@ module.exports.signup = async function(req,res){
             gender : gender ,
             designation : profession , 
             semester : semester,
-            totalClasses : 0 , 
-            classesAttended : 0 ,
-            monthlyAttendence : monthlyAttendenceArray , 
             resume : "" , 
             about : "" , 
             skills : [] , 
@@ -97,10 +30,58 @@ module.exports.signup = async function(req,res){
             cover : "" , 
             dp : "" , 
             assignment : [] , 
+            notes : [] ,
+            rollno : rollno 
         }) ;
+        let newAttendenceProfile = await attendencedb.create({
+            user : newUserProfile._id , 
+            totalClasses : 0 , 
+            classesAttended : 0 ,
+            january : [] , 
+            february : [] , 
+            march : [] , 
+            april : [] , 
+            may : [] , 
+            june : [] , 
+            july : [] , 
+            august : [], 
+            september : [], 
+            october : [] , 
+            november : [] , 
+            december : [], 
+            tcjanuary : 0 , 
+            tcfebruary : 0 , 
+            tcmarch : 0 , 
+            tcapril : 0 , 
+            tcmay : 0 , 
+            tcjune : 0 , 
+            tcjuly : 0 , 
+            tcaugust : 0 , 
+            tcseptember : 0 , 
+            tcoctober : 0 , 
+            tcnovember : 0 , 
+            tcdecember : 0  ,
+            cajanuary : 0 , 
+            cafebruary : 0 , 
+            camarch : 0 , 
+            caapril : 0 , 
+            camay : 0 , 
+            cajune : 0 , 
+            cajuly : 0 , 
+            caaugust : 0 , 
+            caseptember : 0 , 
+            caoctober : 0 , 
+            canovember : 0 , 
+            cadecember : 0  
 
+        })
 
-        if(newUser){
+        newUserProfile.attendence = newAttendenceProfile._id ; 
+        await newUserProfile.save() ;
+        
+        //consoling it to check whether correct db is made or not 
+        //console.log(newUserProfile , newAttendenceProfile) ;
+        if(newUserProfile && newAttendenceProfile){
                return res.json(200 , {
                    data : {
                        success : true ,
@@ -140,7 +121,7 @@ module.exports.login = async function(req,res){
         return res.json(400 , {
             data : {
                 success : false ,
-                message : "Invalid email/password"
+                message : "id/pwd"
             }
         }) ;
     } 

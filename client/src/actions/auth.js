@@ -65,6 +65,7 @@ export function loginsuccess(user){
 }
 
 export function loginfailed(error){
+    console.log("Function failed" , error) ;
     return {
         type : LOGIN_FAILED ,
         error

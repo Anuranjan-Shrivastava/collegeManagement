@@ -31,4 +31,9 @@ router.post('/uploadCover' , [passport.authenticate('jwt',{session : false}) , r
 
 router.post('/uploadDp' , [passport.authenticate('jwt',{session : false}) , resume_controller.uploadProfilepic]  ,resume_controller.uploadDp)
 
+
+
+
+
+
 module.exports = router  ; 

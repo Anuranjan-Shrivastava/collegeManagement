@@ -66,7 +66,9 @@ class NoticeBoard extends Component {
                 </div>}
                 <div className="single-notice-container-options-menu">
                      <div onClick={() => this.props.deletePost(this.props.post.id , this.props.num)}>Delete</div><hr/>
+                     <div onClick={() => this.props.deletePost(this.props.post.id , this.props.num)}>Share</div><hr/>
                 </div>
+              
                
                 <div className="single-notice-container-name"
                      onClick={() => this.handleProfileClick(posterId)}>
