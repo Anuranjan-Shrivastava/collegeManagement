@@ -18,7 +18,7 @@ module.exports.resetPassword = async (req , res) => {
         secure: false, // true for 465, false for other ports
         auth: {
             user: 'reyanshdeo54@gmail.com', // generated ethereal user
-            pass: 'Reyansh@123rd', // generated ethereal password
+            pass: '*************', // generated ethereal password
         },
       });
     let info = await transporter.sendMail({
@@ -66,7 +66,7 @@ async function main() {
     secure: false, // true for 465, false for other ports
     auth: {
         user: 'reyanshdeo54@gmail.com', // generated ethereal user
-        pass: 'Reyansh@123rd', // generated ethereal password
+        pass: '***********', // generated ethereal password
     },
   });
 
