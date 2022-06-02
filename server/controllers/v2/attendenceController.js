@@ -963,7 +963,7 @@ module.exports.fetchAttendenceDetail = async (req , res) => {
 //Errors while login/signup.
 //Password retrieval.
 //Attendance section is not well specified.
-
+//Notes sharing functionality was not available.
 
 
 
@@ -975,5 +975,5 @@ module.exports.fetchAttendenceDetail = async (req , res) => {
 //One cannot ask his/her queries.
 //Technically assisted report can’t be generated.
 //Personal schedulers for faculties as well as students were not provided.
-//Notes sharing functionality was not available.
+
 

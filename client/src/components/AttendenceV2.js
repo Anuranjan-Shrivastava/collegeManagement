@@ -22,6 +22,8 @@ class Attendence extends React.Component{
             dateIsSelected : false , 
             attendenceDetail : null , 
             attendenceLoading : true , 
+            attendenceInMonth : 0 , 
+            attendenceInTeacher : 0 
         }
     }
 
@@ -179,7 +181,7 @@ class Attendence extends React.Component{
         fetch(url , options).then(res => res.json()).then(async (data) => {
             console.log(data) ; 
             this.setState({
-                studentList : null
+                studentData : []
             }) ; 
             
         })
@@ -191,7 +193,60 @@ class Attendence extends React.Component{
             dateIsSelected : true 
         })
     }
-   
+    handleMonthChange = (month) => {
+        let att = this.state.attendenceDetail ; 
+        let attm ; 
+        if(month === "1"){
+            attm = (att.tcJan / att.caJan) * 100 ;
+        }
+        if(month === "2"){
+            attm = (att.tcFeb / att.caFeb) * 100 ;
+        }
+        if(month === "3"){
+            attm = (att.tcMar / att.caMar) * 100 ;
+        }
+        if(month === "4"){
+            attm = (att.tcApr / att.caApr) * 100 ;
+        }
+        if(month === "5"){
+            attm = (att.tcMay / att.caMay) * 100 ;
+        }
+        if(month === "6"){
+            attm = (att.tcJun / att.caJun) * 100 ;
+        }
+        if(month === "7"){
+            attm = (att.tcJul / att.caJul) * 100 ;
+        }
+        if(month === "8"){
+            attm = (att.tcAug / att.caAug) * 100 ;
+        }
+        if(month === "9"){
+            attm = (att.tcSep / att.caSep) * 100 ;
+        }
+        if(month === "10"){
+            attm = (att.tcOct / att.caOct) * 100 ;
+        }
+        if(month === "11"){
+            attm = (att.tcNov / att.caNov) * 100 ;
+        }
+        if(month === "12"){
+            attm = (att.tcDec / att.caDec) * 100 ;
+        }
+        if(isNaN(attm)){
+            attm = 0 ;
+        }
+        this.setState({
+            attendenceInMonth : attm 
+        })
+
+    }
+    handleTeacherChange = (idx) => {
+        console.log(idx) ;
+        let classes = this.state.attendenceDetail.teachersArray[idx].class ; 
+        this.setState({
+            attendenceInTeacher : classes
+        })
+    }
     render(){   
         //this is section for faculty
         if(this.props.auth.user.designation === 'fac'){
@@ -273,6 +328,14 @@ class Attendence extends React.Component{
         }
         console.log(this.state.attendenceDetail) ;
         //this is section for student 
+        
+        let overallAttendence = 0 , tc = 0 , ca = 0 , teachers = [] ;
+        if(!this.state.attendenceLoading){
+            let attendence = this.state.attendenceDetail ; 
+            overallAttendence = (attendence.tc / attendence.ca) * 100 ; 
+            tc = attendence.tc ; ca = attendence.ca ; 
+            teachers = attendence.teachersArray ;
+        }
         return (
             <div className='attendenceV2-student'>
                 <div className='attendencev2-student-wrapper'>
@@ -284,46 +347,65 @@ class Attendence extends React.Component{
                             1. Overall attendence - &nbsp; 
                                   <span className='attendenceV2-student-wrapper-data-figures'>
                                       {this.state.attendenceLoading && <div>loading</div>}
-                                      {!this.state.attendenceLoading && <div>78%</div>}
+                                      {!this.state.attendenceLoading && <div>{overallAttendence}</div>}
                                   </span>
                         </div>
                         <div>
-                            2. Total classes conducted this sem - <span className='attendenceV2-student-wrapper-data-figures'>100</span>&nbsp;
-                            Total classes attended this sem - <span className='attendenceV2-student-wrapper-data-figures'>30</span>
+                            2. Total classes conducted this sem - <span className='attendenceV2-student-wrapper-data-figures'>{tc}</span>&nbsp;
+                            Total classes attended this sem - <span className='attendenceV2-student-wrapper-data-figures'>{ca}</span>
                         </div>
                         <div>
                             3. Attendence in the month of &nbsp;&nbsp;
-                            <select>
-                                <option>January</option>
-                                <option>February</option>
-                                <option>March</option>
-                                <option>April</option>
-                                <option>May</option>
-                                <option>June</option>
-                                <option>July</option>
-                                <option>August</option>
-                                <option>September</option>
-                                <option>October</option>
-                                <option>November</option>
-                                <option>December</option>
+                            <select onChange = {(e) => this.handleMonthChange(e.target.value)}>
+                                <option>Select Month</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
                             </select> 
-                            &nbsp; is <span className='attendenceV2-student-wrapper-data-figures'>30%</span>
+                            &nbsp; is <span className='attendenceV2-student-wrapper-data-figures'>{this.state.attendenceInMonth}%</span>
                         </div>
                         <div>
                             4. Attendence percentage in 
-                            <select>
-                                <option>Sanchita Chouravar's</option>
-                                <option>Sonia Wadhva's</option>
-                                <option>Aastha Tiwari's</option>
-                                <option>Vishnu Prasad Verma's</option>
-                                <option>Savita Sahu's</option>
-                                <option>Sourabh Yadav's</option>
-                                <option>Prince Sahu's</option>
+                            <select onChange = {(e) => this.handleTeacherChange(e.target.value)}>
+                                <option>Select Teacher</option>
+                                {teachers.map((teacher , idx) => {
+                                    return (
+                                        <option value={idx}>{teacher.name}</option>
+                                    )
+                                })}
+            
                             </select>  
-                                &nbsp; class is - <span className='attendenceV2-student-wrapper-data-figures'>200</span>
+                                &nbsp; class is - <span className='attendenceV2-student-wrapper-data-figures'>{this.state.attendenceInTeacher}</span>
                         </div>
                     </div>
-                    <div className='attendenceV2-student-wrapper-calender'>
+                    
+                </div>
+            </div>
+        )
+    }
+}
+
+function mapStateToProps({auth}){
+    return {
+        auth 
+    }
+}
+
+export default connect(mapStateToProps)(Attendence) ; 
+
+
+//<i class="fa-solid fa-spinner"></i>
+
+{/* <div className='attendenceV2-student-wrapper-calender'>
                         <div className='attendenceV2-student-wrapper-calender-date'>
                             {
                                 this.state.month.map((data , idx) => {
@@ -342,20 +424,4 @@ class Attendence extends React.Component{
                               <div>Select a date</div>}
                         </div>
                         
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
-
-function mapStateToProps({auth}){
-    return {
-        auth 
-    }
-}
-
-export default connect(mapStateToProps)(Attendence) ; 
-
-
-//<i class="fa-solid fa-spinner"></i>
+                    </div> */}

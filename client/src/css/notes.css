@@ -343,18 +343,13 @@ input[type="file"]{
     color : white ; 
 }
 
-.openButton {
-    height : 40px ; 
-    width : 300px ; 
-    box-sizing: border-box;
-    background-color: green;
-    border-radius: 20px ;
-    margin : auto ; 
-    margin-top : 20px ; 
-    color : white ; 
-    text-align: center;
-    line-height : 40px ; 
-    font-size : 1.5rem ;
-    cursor: pointer;
 
+.notes-container-display-wrap-element-notesContent{
+    height : 40px ; 
+    width : 80px ; 
+    background-color: green;
+    margin-left : 10px ; 
+}
+.notes-container-display-wrap-element-notesContent > a{
+    font-size : 1.5rem ;
 }

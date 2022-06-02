@@ -68,12 +68,12 @@ module.exports.makeNotes = async function(req , res){
         let teacher = await userDB.findOne({_id : idTeacher}) ;
         teacher.notes.push(newAssignment._id) ;
         teacher.markModified('notes') ;
-        teacher.save() ;
+        await teacher.save() ;
         
+         
         return res.status(200).send({
             data : {
-                success : true , 
-                message : "Notes Ban Gaya"
+                success : true   , 
             }
         })
    }
@@ -105,7 +105,7 @@ module.exports.fetchNotes = async function(req , res){
             let notes = await notesDB.findOne({_id : notesIds[i]}) ;
             let betterNotes = {
                 subject : notes.subject , 
-                nameAssignment : notes.nameNotes , 
+                nameNotes : notes.nameNotes , 
                 branch : notes.branch , 
                 semester : notes.semester , 
                 date : notes.dateProvided , 
@@ -144,7 +144,6 @@ module.exports.fetchNotes = async function(req , res){
             let content = await datauri(`.${notes.notesPdf}`) ;
             betterNotes.pdf = content ;
         }
-       
         betterNotesArray.push(betterNotes) ;
     }
     return res.status(200).send({

@@ -14,12 +14,16 @@ class Notes extends Component {
             notesName : null , 
             createClicked : false ,
             notespdf : null , 
-            prevNotes : null 
+            notes : [] 
             
         }
     }
 
     UNSAFE_componentWillMount(){
+       this.fetchNotes() ;
+    }
+
+    fetchNotes = () => {
         const url = "http://localhost:8000/V2/notes/fetchNotes" ; 
         const token = localStorage.getItem('token') ;
         fetch(url , {
@@ -30,7 +34,10 @@ class Notes extends Component {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data) ;
+           
+              this.setState({
+                  notes : data.data.notes 
+              })
         })
     }
 
@@ -101,7 +108,7 @@ class Notes extends Component {
         fetch(url , options)
           .then(res => res.json())
           .then(data => {
-               console.log(data) ;
+               this.fetchNotes() ;
           })
     }
     base64toBlob = (data:String) => {
@@ -119,8 +126,7 @@ class Notes extends Component {
         return new Blob([out], { type: 'application/pdf' });
     };
     render(){    
-        let notes =[]; 
-        console.log(notes) ;
+        let notes =  this.state.notes;
         if(this.props.auth.user.designation === "stu"){
             return (
                 <div className='notes'>
@@ -221,8 +227,7 @@ class Notes extends Component {
                                  return (
                                      <NotesTeacher 
                                         notes={notes}
-                                        index = {idx}
-                                        handleSingleOpen={this.handleSingleOpen}/>
+                                        index = {idx}/>
                                  )
                              })}
                          </div>

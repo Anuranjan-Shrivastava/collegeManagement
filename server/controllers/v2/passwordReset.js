@@ -1,39 +1,34 @@
 const nodemailer = require("nodemailer");
 const userdb = require('../../models/user') ;
 
-module.exports.resetPassword = async (req , res) => {
+module.exports.resetPassword = async () => {
 
-    console.log(req.body)  ; 
+    //console.log(req.body)  ; 
     // return res.status(200).json({
     //   data : {
     //      success : true 
     //   }
     // }) ; 
-    let email = req.body.email ; 
+    //let email = req.body.email ; 
     let otp = Math.floor(Math.random() * 5000) + 1000  ; 
 
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
-        port: 587,
-        secure: false, // true for 465, false for other ports
+        port: 465,
+        secure: true, // true for 465, false for other ports
         auth: {
-            user: 'reyanshdeo54@gmail.com', // generated ethereal user
-            pass: '*************', // generated ethereal password
+            user: 'codialdevelop@gmail.com', // generated ethereal user
+            pass: 'Codial@123', // generated ethereal password
         },
       });
     let info = await transporter.sendMail({
-        from: '"Educamp" <reyanshdeo54@gmail.com>', // sender address
-        to:    `${email}`, // list of receivers
+        from: '"Educamp" <codialdevelop@gmail.com>', // sender address
+        to:    `anuranjan8319918906@gmail.com`, // list of receivers
         subject: "Password Reset", // Subject line
         text: `Your one time password is ${otp}`, // plain text body
       });
-
-      return res.status(200).json ({
-        data : {
-          code : otp , 
-          success : true 
-        }
-      })
+      console.log("Inside reset Password : ", otp) ;
+      
 
 
       

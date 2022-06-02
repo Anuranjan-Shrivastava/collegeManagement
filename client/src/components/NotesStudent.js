@@ -23,12 +23,9 @@ class NotesStudent extends Component {
         let subject = this.props.notes.subject ; 
         let notesName = this.props.notes.nameNotes ;  
         let pdf = this.props.notes.pdf ; 
-        let pdfurl = null ; 
-        if(pdf !== undefined){
-            const blob = this.base64toBlob(pdf) ;
-            pdfurl = URL.createObjectURL(blob);
-        }
-        let img = this.props.notes.img ; 
+        let pdfurl = null ;
+        const blob = this.base64toBlob(pdf) ;
+        pdfurl = URL.createObjectURL(blob); 
         // let submittedStatus = true ;
         return (
             <div className='notes-container-box-element'>
@@ -43,20 +40,14 @@ class NotesStudent extends Component {
                 </div>
                 
                 <div className='notes-container-box-element-content'>
-                     {img !== undefined && <div className='notes-container-box-element-content-img'>
-                         <div className='notes-img-container'>
-                             <img alt="notes pic" src={img} />
-                         </div>
-                         <div className='notes-img-name-container'>Notes.jpg</div>
-                     </div>}
-                     {pdfurl !== null && <div className='notes-container-box-element-content-pdf'>
+                    <div className='notes-container-box-element-content-pdf'>
                          <div className="notes-pdf-container">
                              <a href={pdfurl}
                                 target="_blank"
                                 rel="noreferrer">
                              Notes.pdf </a>
                          </div>
-                     </div>}
+                     </div>
                 </div>
                 
                     

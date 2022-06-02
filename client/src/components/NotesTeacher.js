@@ -13,12 +13,28 @@ class NotesTeacher extends Component {
         if(sem === "eight")return 8 ; 
 
     }
+    base64toBlob = (data:String) => {
+        // Cut the prefix `data:application/pdf;base64` from the raw base 64
+        const base64WithoutPrefix = data.substr('data:application/pdf;base64,'.length);
+    
+        const bytes = atob(base64WithoutPrefix);
+        let length = bytes.length;
+        let out = new Uint8Array(length);
+    
+        while (length--) {
+            out[length] = bytes.charCodeAt(length);
+        }
+    
+        return new Blob([out], { type: 'application/pdf' });
+    };
     render() {
         console.log(this.props) ;
         let branch = this.props.notes.branch ; 
         let semester = this.intify(this.props.notes.semester) ;
         let subName = this.props.notes.subject ; 
         let notesName = this.props.notes.nameNotes ;
+        const blob = this.base64toBlob(this.props.notes.pdf) ;
+        let pdfurl = URL.createObjectURL(blob);
         return (
                 <div className="notes-container-display-wrap-element">
                     <div className='notes-container-display-wrap-element-branchSem'>
@@ -29,6 +45,13 @@ class NotesTeacher extends Component {
                     </div>
                     <div className='notes-container-display-wrap-element-notesName'>
                         <i style={{"font-size" : ".8rem","color":"yellow"}}> notes name </i>   {notesName} 
+                    </div>
+                    <div className='notes-container-display-wrap-element-notesContent'>
+                         <a href={pdfurl}
+                            target="_blank"
+                            rel="noreferrer"
+                            id="linky"
+                            >Content</a>
                     </div>
                     
                     

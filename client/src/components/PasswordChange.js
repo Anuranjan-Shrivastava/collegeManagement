@@ -7,7 +7,7 @@ class PasswordChange extends Component {
     constructor() { 
         super() ;
         this.state = {
-            origial_code : 1234 , 
+            origial_code : null , 
             users_code : null , 
             phase1 : true  , 
             phase2 : false , 
